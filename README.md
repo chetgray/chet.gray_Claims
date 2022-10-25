@@ -9,32 +9,32 @@ Create a Claims Console Application.
 - [ ] The user should be able to View a Hospital by Name
 - [ ] The user should be able to View a Patient by Last Name.
 - [ ] A Claim consists of the following fields:
-  - [ ] Claim ID (this should be an auto-generated numeric)
-  - [ ] Patient ID (numeric)
-  - [ ] Patient Last Name
-  - [ ] Patient First Name
-  - [ ] Patient Middle Name
-  - [ ] Patient Address
-  - [ ] Patient City
-  - [ ] Patient State
-  - [ ] Patient Zip
-  - [ ] Patient Phone Number
-  - [ ] Patient Email Address
-  - [ ] Insurance Carrier ID
-  - [ ] Insurance Carrier Name
-  - [ ] Insurance Carrier Customer Service Phone Number
-  - [ ] Hospital ID
-  - [ ] Hospital Name
-  - [ ] Hospital Address
-  - [ ] Hospital City
-  - [ ] Hospital State
-  - [ ] Hospital Zip
-  - [ ] Procedure Code
-  - [ ] Procedure Name
-  - [ ] Claim Amount Outstanding
-  - [ ] Insurance Responsibility Amount
+  - [x] Claim ID (this should be an auto-generated numeric)
+  - [x] Patient ID (numeric)
+  - [x] Patient Last Name
+  - [x] Patient First Name
+  - [x] Patient Middle Name
+  - [x] Patient Address
+  - [x] Patient City
+  - [x] Patient State
+  - [x] Patient Zip
+  - [x] Patient Phone Number
+  - [x] Patient Email Address
+  - [x] Insurance Carrier ID
+  - [x] Insurance Carrier Name
+  - [x] Insurance Carrier Customer Service Phone Number
+  - [x] Hospital ID
+  - [x] Hospital Name
+  - [x] Hospital Address
+  - [x] Hospital City
+  - [x] Hospital State
+  - [x] Hospital Zip
+  - [x] Procedure Code
+  - [x] Procedure Name
+  - [x] Claim Amount Outstanding
+  - [x] Insurance Responsibility Amount
   - [ ] Patient Responsibility Amount
-- [ ] Your database tables should be properly normalized
+- [x] Your database tables should be properly normalized
 - [ ] All interactions with the database should take place via stored
   procedures.
 - [ ] When the user enters a new claim, walk them through the process

@@ -56,5 +56,22 @@
   <Import Condition="'$(SQLDBExtensionsRefPath)' == ''" Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
   <ItemGroup>
     <Folder Include="Properties" />
+    <Folder Include="Tables" />
+  </ItemGroup>
+  <ItemGroup>
+    <Build Include="Tables\Claim.sql" />
+    <Build Include="Tables\Patient.sql" />
+    <Build Include="Tables\Carrier.sql" />
+    <Build Include="Tables\Hospital.sql" />
+    <Build Include="Tables\Procedure.sql" />
+    <Build Include="Tables\Address.sql" />
+    <Build Include="Tables\PhoneNumber.sql" />
+    <Build Include="Tables\City.sql" />
+    <Build Include="Tables\Zip.sql" />
+    <Build Include="Tables\EmailAddress.sql" />
+    <Build Include="Tables\State.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Claims.Database.local.publish.xml" />
   </ItemGroup>
 </Project>
