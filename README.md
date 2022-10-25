@@ -8,7 +8,7 @@
 > - [ ] The user should be able to Add a Claim.
 > - [ ] The user should be able to View a Hospital by Name
 > - [ ] The user should be able to View a Patient by Last Name.
-> - [ ] A Claim consists of the following fields:
+> - [x] A Claim consists of the following fields:
 >   - [x] Claim ID (this should be an auto-generated numeric)
 >   - [x] Patient ID (numeric)
 >   - [x] Patient Last Name
@@ -33,7 +33,7 @@
 >   - [x] Procedure Name
 >   - [x] Claim Amount Outstanding
 >   - [x] Insurance Responsibility Amount
->   - [ ] Patient Responsibility Amount
+>   - [x] Patient Responsibility Amount
 > - [x] Your database tables should be properly normalized
 > - [ ] All interactions with the database should take place via stored
 >   procedures.

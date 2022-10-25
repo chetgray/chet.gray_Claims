@@ -4,17 +4,16 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{91A22784-5616-49A7-AF17-FB9CC5FD1202}</ProjectGuid>
-    <OutputType>Exe</OutputType>
-    <RootNamespace>Claims.App</RootNamespace>
-    <AssemblyName>Claims.App</AssemblyName>
+    <ProjectGuid>{24443429-84B8-4A17-9D68-BB0178A714A6}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Claims.Models</RootNamespace>
+    <AssemblyName>Claims.Models</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -24,7 +23,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -43,17 +41,27 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Program.cs" />
+    <Compile Include="AddressModel.cs" />
+    <Compile Include="CarrierModel.cs" />
+    <Compile Include="ClaimModel.cs" />
+    <Compile Include="EmailAddressModel.cs" />
+    <Compile Include="HospitalModel.cs" />
+    <Compile Include="IAddressModel.cs" />
+    <Compile Include="IBaseModel.cs" />
+    <Compile Include="ICarrierModel.cs" />
+    <Compile Include="CityModel.cs" />
+    <Compile Include="IClaimModel.cs" />
+    <Compile Include="IEmailAddressModel.cs" />
+    <Compile Include="IHospitalModel.cs" />
+    <Compile Include="IPatientModel.cs" />
+    <Compile Include="IPhoneNumberModel.cs" />
+    <Compile Include="IProcedureModel.cs" />
+    <Compile Include="PatientModel.cs" />
+    <Compile Include="PhoneNumberModel.cs" />
+    <Compile Include="ProcedureModel.cs" />
+    <Compile Include="StateModel.cs" />
+    <Compile Include="ZipModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Claims.Models\Claims.Models.csproj">
-      <Project>{24443429-84b8-4a17-9d68-bb0178a714a6}</Project>
-      <Name>Claims.Models</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
