@@ -1,4 +1,6 @@
-﻿namespace Claims.Models
+﻿using Claims.Business.Models.Interfaces;
+
+namespace Claims.Business.Models
 {
     public class ClaimModel : IClaimModel
     {

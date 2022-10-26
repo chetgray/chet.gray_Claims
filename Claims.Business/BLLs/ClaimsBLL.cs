@@ -1,10 +1,10 @@
 ﻿using System;
 
-using Claims.Models;
+using Claims.Business.Models.Interfaces;
 
-namespace Claims.Business
+namespace Claims.Business.BLLs
 {
-    public class ClaimsBL
+    public class ClaimsBLL
     {
         public IClaimModel GetById(int id)
         {

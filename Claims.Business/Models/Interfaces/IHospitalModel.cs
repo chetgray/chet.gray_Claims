@@ -1,4 +1,4 @@
-﻿namespace Claims.Models
+﻿namespace Claims.Business.Models.Interfaces
 {
     public interface IHospitalModel : IBaseModel
     {

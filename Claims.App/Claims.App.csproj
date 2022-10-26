@@ -54,10 +54,6 @@
       <Project>{a7455098-d351-400f-adfd-c7f6add816b2}</Project>
       <Name>Claims.Business</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Claims.Models\Claims.Models.csproj">
-      <Project>{24443429-84b8-4a17-9d68-bb0178a714a6}</Project>
-      <Name>Claims.Models</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
