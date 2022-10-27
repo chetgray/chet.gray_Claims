@@ -4,9 +4,13 @@ using Claims.Business.Models.Interfaces;
 
 namespace Claims.Business.BLLs
 {
-    public class ClaimBLL : IBaseBLL<IClaimModel>
+    public class ClaimBLL : BaseBLL<IClaimModel>
     {
-        public IClaimModel GetById(int id)
+        public ClaimBLL(string connectionString) : base(connectionString)
+        {
+        }
+
+        public override IClaimModel GetById(int id)
         {
             throw new NotImplementedException();
         }
