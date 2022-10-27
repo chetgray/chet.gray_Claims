@@ -2,5 +2,6 @@
 {
     public interface IBaseDTO
     {
+        string Id { get; set; }
     }
 }

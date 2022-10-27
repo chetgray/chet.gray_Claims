@@ -43,8 +43,13 @@
   <ItemGroup>
     <Compile Include="DAL\BaseDAL.cs" />
     <Compile Include="DAL\IBaseDAL.cs" />
+    <Compile Include="DTOs\BaseDTO.cs" />
+    <Compile Include="DTOs\CarrierDTO.cs" />
     <Compile Include="DTOs\ClaimDTO.cs" />
+    <Compile Include="DTOs\HospitalDTO.cs" />
     <Compile Include="DTOs\IBaseDTO.cs" />
+    <Compile Include="DTOs\PatientDTO.cs" />
+    <Compile Include="DTOs\ProcedureDTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\BaseRepository.cs" />
     <Compile Include="Repositories\ClaimRepository.cs" />
