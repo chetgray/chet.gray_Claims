@@ -35,7 +35,7 @@
 >   - [x] Insurance Responsibility Amount
 >   - [x] Patient Responsibility Amount
 > - [x] Your database tables should be properly normalized
-> - [ ] All interactions with the database should take place via stored
+> - [x] All interactions with the database should take place via stored
 >   procedures.
 > - [x] When the user enters a new claim, walk them through the process
 >   like this:
