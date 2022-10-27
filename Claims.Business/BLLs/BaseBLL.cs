@@ -4,7 +4,7 @@ namespace Claims.Business.BLLs
 {
     public abstract class BaseBLL<TModel> : IBaseBLL<TModel> where TModel : IBaseModel
     {
-        private readonly string _connectionString;
+        protected readonly string _connectionString;
 
         protected BaseBLL(string connectionString)
         {

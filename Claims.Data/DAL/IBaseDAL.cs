@@ -3,7 +3,7 @@ using System.Data;
 
 namespace Claims.Data.DAL
 {
-    internal interface IBaseDAL
+    public interface IBaseDAL
     {
         DataTable ExecuteStoredProcedure(
             string storedProcedureName,
