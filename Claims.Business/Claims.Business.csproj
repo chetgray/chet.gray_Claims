@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BLLs\ClaimBLL.cs" />
+    <Compile Include="BLLs\IBaseBLL.cs" />
     <Compile Include="Models\AddressModel.cs" />
     <Compile Include="Models\CarrierModel.cs" />
     <Compile Include="Models\CityModel.cs" />
