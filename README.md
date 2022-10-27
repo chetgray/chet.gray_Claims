@@ -37,13 +37,13 @@
 > - [x] Your database tables should be properly normalized
 > - [ ] All interactions with the database should take place via stored
 >   procedures.
-> - [ ] When the user enters a new claim, walk them through the process
+> - [x] When the user enters a new claim, walk them through the process
 >   like this:
->   - [ ] Ask them for information about the patient.
->   - [ ] Ask them for information about the hospital.
->   - [ ] Ask them for information about the procedure.
->   - [ ] Ask them for information about the patient's insurance.
-> - [ ] Normally we'd call an API or something like that to get the
+>   - [x] Ask them for information about the patient.
+>   - [x] Ask them for information about the hospital.
+>   - [x] Ask them for information about the procedure.
+>   - [x] Ask them for information about the patient's insurance.
+> - [x] Normally we'd call an API or something like that to get the
 >   Claim Amount Outstanding, the Insurance Responsibility Amount, and
 >   the Patient Responsibility Amount.  But for the purposes of our
 >   exercise, just have the user enter that on the screen.
