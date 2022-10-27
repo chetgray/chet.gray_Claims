@@ -52,7 +52,7 @@
 >     For example, if the user enters "Anthem" as the insurance carrier,
 >     and if Anthem is already in the table, don't add it again, but use
 >     the one that's there.
->   - [ ] Use Business Logic and Models in your main program - don't
+>   - [x] Use Business Logic and Models in your main program - don't
 >     interact directly with DTOs in your main program.  So your flow
 >     should go: Main Program -> Business Logic (converts Models to DTOs
 >     and vice-versa) -> Repository -> DAL.
