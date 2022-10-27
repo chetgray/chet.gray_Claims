@@ -1,6 +1,6 @@
 ﻿namespace Claims.Data.DTOs
 {
-    public class ClaimDTO : IBaseDTO
+    public interface IBaseDTO
     {
     }
 }
