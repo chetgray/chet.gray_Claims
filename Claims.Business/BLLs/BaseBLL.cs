@@ -8,7 +8,9 @@ namespace Claims.Business.BLLs
 
         protected BaseBLL(string connectionString)
         {
-            _connectionString = connectionString;
+            _connectionString =
+                connectionString
+                ?? throw new System.ArgumentNullException(nameof(connectionString));
         }
 
         public abstract TModel GetById(int id);

@@ -10,7 +10,9 @@ namespace Claims.Data.Repositories
 
         protected BaseRepository(string connectionString)
         {
-            _connectionString = connectionString;
+            _connectionString =
+                connectionString
+                ?? throw new System.ArgumentNullException(nameof(connectionString));
             _dal = new BaseDAL(_connectionString);
         }
 

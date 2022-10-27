@@ -10,7 +10,9 @@ namespace Claims.Data.DAL
 
         internal BaseDAL(string connectionString)
         {
-            _connectionString = connectionString;
+            _connectionString =
+                connectionString
+                ?? throw new System.ArgumentNullException(nameof(connectionString));
         }
 
         public DataTable ExecuteStoredProcedure(
