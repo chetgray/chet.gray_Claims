@@ -2,11 +2,12 @@
 
 namespace Claims.Business.Models
 {
-    internal class HospitalModel : IHospitalModel
+    public class HospitalModel : BaseModel, IHospitalModel
     {
-        public int? Id { get; }
         public string Name { get; set; }
-        public IAddressModel Address { get; set; }
-        public IPhoneNumberModel CustomerServicePhoneNumber { get; set; }
+        public string Street { get; set; }
+        public string City { get; set; }
+        public string State { get; set; }
+        public string Zip { get; set; }
     }
 }

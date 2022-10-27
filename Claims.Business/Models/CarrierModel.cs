@@ -2,10 +2,9 @@
 
 namespace Claims.Business.Models
 {
-    internal class CarrierModel : ICarrierModel
+    public class CarrierModel : BaseModel, ICarrierModel
     {
-        public int? Id { get; }
         public string Name { get; set; }
-        public IPhoneNumberModel CustomerServicePhoneNumber { get; set; }
+        public string CustomerServicePhoneNumber { get; set; }
     }
 }

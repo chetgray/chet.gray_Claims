@@ -2,9 +2,8 @@
 
 namespace Claims.Business.Models
 {
-    internal class PhoneNumberModel : IPhoneNumberModel
+    public abstract class BaseModel : IBaseModel
     {
         public int? Id { get; }
-        public string PhoneNumber { get; set; }
     }
 }

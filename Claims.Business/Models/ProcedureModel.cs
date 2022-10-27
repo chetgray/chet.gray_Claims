@@ -2,9 +2,8 @@
 
 namespace Claims.Business.Models
 {
-    internal class ProcedureModel : IProcedureModel
+    public class ProcedureModel : BaseModel, IProcedureModel
     {
-        public int? Id { get; }
         public string Code { get; set; }
         public string Name { get; set; }
     }

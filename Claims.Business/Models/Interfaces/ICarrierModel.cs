@@ -3,6 +3,6 @@
     public interface ICarrierModel : IBaseModel
     {
         string Name { get; set; }
-        IPhoneNumberModel CustomerServicePhoneNumber { get; set; }
+        string CustomerServicePhoneNumber { get; set; }
     }
 }

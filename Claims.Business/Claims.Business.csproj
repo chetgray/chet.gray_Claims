@@ -44,26 +44,18 @@
     <Compile Include="BLLs\BaseBLL.cs" />
     <Compile Include="BLLs\ClaimBLL.cs" />
     <Compile Include="BLLs\IBaseBLL.cs" />
-    <Compile Include="Models\AddressModel.cs" />
+    <Compile Include="Models\BaseModel.cs" />
     <Compile Include="Models\CarrierModel.cs" />
-    <Compile Include="Models\CityModel.cs" />
     <Compile Include="Models\ClaimModel.cs" />
-    <Compile Include="Models\EmailAddressModel.cs" />
     <Compile Include="Models\HospitalModel.cs" />
-    <Compile Include="Models\Interfaces\IAddressModel.cs" />
     <Compile Include="Models\Interfaces\IBaseModel.cs" />
     <Compile Include="Models\Interfaces\ICarrierModel.cs" />
     <Compile Include="Models\Interfaces\IClaimModel.cs" />
-    <Compile Include="Models\Interfaces\IEmailAddressModel.cs" />
     <Compile Include="Models\Interfaces\IHospitalModel.cs" />
     <Compile Include="Models\Interfaces\IPatientModel.cs" />
-    <Compile Include="Models\Interfaces\IPhoneNumberModel.cs" />
     <Compile Include="Models\Interfaces\IProcedureModel.cs" />
     <Compile Include="Models\PatientModel.cs" />
-    <Compile Include="Models\PhoneNumberModel.cs" />
     <Compile Include="Models\ProcedureModel.cs" />
-    <Compile Include="Models\StateModel.cs" />
-    <Compile Include="Models\ZipModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

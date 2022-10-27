@@ -2,14 +2,17 @@
 
 namespace Claims.Business.Models
 {
-    internal class PatientModel : IPatientModel
+    public class PatientModel : BaseModel, IPatientModel
     {
-        public int? Id { get; }
         public string LastName { get; set; }
         public string FirstName { get; set; }
         public string MiddleName { get; set; }
-        public IAddressModel Address { get; set; }
-        public IPhoneNumberModel PhoneNumber { get; set; }
-        public IEmailAddressModel EmailAddress { get; set; }
+        public string Street { get; set; }
+        public string City { get; set; }
+        public string State { get; set; }
+        public string Zip { get; set; }
+
+        public string PhoneNumber { get; set; }
+        public string EmailAddress { get; set; }
     }
 }
