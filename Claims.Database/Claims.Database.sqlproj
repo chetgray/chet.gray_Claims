@@ -57,6 +57,7 @@
   <ItemGroup>
     <Folder Include="Properties" />
     <Folder Include="Tables" />
+    <Folder Include="Stored Procedures" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Tables\Claim.sql" />
@@ -70,6 +71,7 @@
     <Build Include="Tables\Zip.sql" />
     <Build Include="Tables\EmailAddress.sql" />
     <Build Include="Tables\State.sql" />
+    <Build Include="Stored Procedures\spA_Procedure_Insert.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Claims.Database.local.publish.xml" />
