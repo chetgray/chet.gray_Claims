@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Configuration;
+using System.Globalization;
 
 using Claims.Business.BLLs;
 using Claims.Business.Models;
@@ -14,6 +15,7 @@ namespace Claims.App
             string connectionString = ConfigurationManager.ConnectionStrings[
                 "ClaimsData"
             ].ConnectionString;
+            ClaimBLL claimBLL = null;
             ProcedureBLL procedureBLL = null;
 
             bool shouldContinueApp = true;
@@ -35,6 +37,8 @@ namespace Claims.App
                 {
                     case "1":
                         Console.WriteLine("** NEW CLAIM ENTRY **");
+
+                        claimBLL = claimBLL ?? new ClaimBLL(connectionString);
 
                         Console.WriteLine("\n>> Patient Information <<\n");
                         Console.Write("Patient First Name:  ");
@@ -82,14 +86,78 @@ namespace Claims.App
 
                         Console.WriteLine(">> Additional Claim Information <<");
                         Console.Write("Claim Amount Outstanding:  ");
-                        string claimOutstandingAmount = Console.ReadLine();
+                        decimal claimOutstandingAmount;
+                        while (
+                            !decimal.TryParse(
+                                Console.ReadLine(),
+                                NumberStyles.Currency,
+                                CultureInfo.CurrentCulture,
+                                out claimOutstandingAmount
+                            )
+                        )
+                        {
+                            Console.WriteLine("ERROR:  Please enter a valid amount.");
+                            Console.Write("Claim Amount Outstanding:  ");
+                        }
                         Console.Write("Amount Insurance is Responsible For:  ");
-                        string claimInsuranceResponsibilityAmount = Console.ReadLine();
-                        //Console.Write("Amount Patient is Responsible for:  ");
-                        //string claimPatientResponsibilityAmount = Console.ReadLine();
+                        decimal claimInsuranceResponsibilityAmount;
+                        while (
+                            !decimal.TryParse(
+                                Console.ReadLine(),
+                                NumberStyles.Currency,
+                                CultureInfo.CurrentCulture,
+                                out claimInsuranceResponsibilityAmount
+                            )
+                        )
+                        {
+                            Console.WriteLine("ERROR:  Please enter a valid amount.");
+                            Console.Write("Amount Insurance is Responsible For:  ");
+                        }
 
-                        IClaimModel claim = new ClaimModel();
-                        Console.WriteLine($"** New Claim Created.  Claim ID is {claim.Id} **\n");
+                        IClaimModel claim = new ClaimModel
+                        {
+                            Patient = new PatientModel
+                            {
+                                LastName = patientLastName,
+                                FirstName = patientFirstName,
+                                MiddleName = patientMiddleName,
+                                Street = patientStreet,
+                                City = patientCity,
+                                State = patientState,
+                                Zip = patientZip,
+                                PhoneNumber = patientPhoneNumber,
+                                EmailAddress = patientEmailAddress,
+                            },
+                            Carrier = new CarrierModel
+                            {
+                                Name = carrierName,
+                                CustomerServicePhoneNumber = carrierCustomerServicePhoneNumber,
+                            },
+                            Hospital = new HospitalModel
+                            {
+                                Name = hospitalName,
+                                Street = hospitalStreet,
+                                City = hospitalCity,
+                                State = hospitalState,
+                                Zip = hospitalZip,
+                            },
+                            Procedure = new ProcedureModel
+                            {
+                                Code = procedureCode,
+                                Name = procedureName,
+                            },
+                            OutstandingAmount = claimOutstandingAmount,
+                            InsuranceResponsibilityAmount = claimInsuranceResponsibilityAmount,
+                        };
+                        Console.WriteLine(
+                            $"Amount Patient is Responsible for:  {claim.PatientResponsibilityAmount:C}"
+                        );
+
+                        IClaimModel insertedClaim = claimBLL.Insert(claim);
+
+                        Console.WriteLine(
+                            $"\n** New Claim Created.  Claim ID is {insertedClaim.Id} **\n"
+                        );
                         break;
 
                     case "2":

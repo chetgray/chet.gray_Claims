@@ -19,7 +19,6 @@ namespace Claims.Business.BLLs
         public override IProcedureModel Insert(IProcedureModel model)
         {
             ProcedureDTO dto = ConvertToDto(model);
-
             IProcedureModel insertedModel = ConvertToModel(_repository.Insert(dto));
 
             return insertedModel;
@@ -38,23 +37,7 @@ namespace Claims.Business.BLLs
             return model;
         }
 
-        private static IProcedureModel ConvertToModel(ProcedureDTO dto)
-        {
-            if (dto is null)
-            {
-                return null;
-            }
-            IProcedureModel model = new ProcedureModel
-            {
-                Id = dto.Id,
-                Code = dto.Code,
-                Name = dto.Name
-            };
-
-            return model;
-        }
-
-        private static ProcedureDTO ConvertToDto(IProcedureModel model)
+        internal static ProcedureDTO ConvertToDto(IProcedureModel model)
         {
             if (model is null)
             {
@@ -64,10 +47,26 @@ namespace Claims.Business.BLLs
             {
                 Id = model.Id,
                 Code = model.Code,
-                Name = model.Name
+                Name = model.Name,
             };
 
             return dto;
+        }
+
+        internal static IProcedureModel ConvertToModel(ProcedureDTO dto)
+        {
+            if (dto is null)
+            {
+                return null;
+            }
+            IProcedureModel model = new ProcedureModel
+            {
+                Id = dto.Id,
+                Code = dto.Code,
+                Name = dto.Name,
+            };
+
+            return model;
         }
     }
 }
