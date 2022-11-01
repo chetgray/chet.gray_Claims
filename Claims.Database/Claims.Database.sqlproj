@@ -72,6 +72,7 @@
     <Build Include="Tables\EmailAddress.sql" />
     <Build Include="Tables\State.sql" />
     <Build Include="Stored Procedures\spA_Procedure_Insert.sql" />
+    <Build Include="Stored Procedures\spA_Procedure_GetByCode.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Claims.Database.local.publish.xml" />

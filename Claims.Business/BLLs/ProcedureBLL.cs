@@ -30,6 +30,14 @@ namespace Claims.Business.BLLs
             throw new NotImplementedException();
         }
 
+        public IProcedureModel GetByCode(string code)
+        {
+            ProcedureDTO dto = _repository.GetByCode(code);
+            IProcedureModel model = ConvertToModel(dto);
+
+            return model;
+        }
+
         private static IProcedureModel ConvertToModel(ProcedureDTO dto)
         {
             if (dto is null)

@@ -4,7 +4,7 @@
 AS
 
 INSERT
-INTO [dbo].[Procedure] (
+INTO [Procedure] (
     [Code]
     , [Name]
 )
@@ -19,9 +19,7 @@ SELECT
     , [Code]
     , [Name]
 FROM
-    [dbo].[Procedure]
+    [Procedure]
 WHERE
     [ProcedureID] = SCOPE_IDENTITY()
 ;
-
-GO

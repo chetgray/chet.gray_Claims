@@ -32,6 +32,26 @@ namespace Claims.Data.Repositories
             throw new NotImplementedException();
         }
 
+        public ProcedureDTO GetByCode(string code)
+        {
+            Dictionary<string, object> parameters = new Dictionary<string, object>
+            {
+                { "@code", code }
+            };
+
+            DataTable dataTable = _dal.ExecuteStoredProcedure(
+                "dbo.spA_Procedure_GetByCode",
+                parameters
+            );
+            if (dataTable.Rows.Count == 0)
+            {
+                return null;
+            }
+            ProcedureDTO dto = ConvertToDto(dataTable.Rows[0]);
+
+            return dto;
+        }
+
         private static List<ProcedureDTO> ConvertToDtoList(DataTable dataTable)
         {
             List<ProcedureDTO> dtos = new List<ProcedureDTO>();

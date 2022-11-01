@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Configuration;
 
+using Claims.Business.BLLs;
 using Claims.Business.Models;
 using Claims.Business.Models.Interfaces;
 
@@ -13,6 +14,7 @@ namespace Claims.App
             string connectionString = ConfigurationManager.ConnectionStrings[
                 "ClaimsData"
             ].ConnectionString;
+            ProcedureBLL procedureBLL = null;
 
             bool shouldContinueApp = true;
             do
@@ -104,6 +106,19 @@ namespace Claims.App
 
                     case "5":
                         Console.WriteLine("** VIEW EXISTING PROCEDURE **");
+
+                        procedureBLL = procedureBLL ?? new ProcedureBLL(connectionString);
+                        Console.Write("\nPlease enter the Procedure Code:  ");
+                        string query = Console.ReadLine();
+                        IProcedureModel result = procedureBLL.GetByCode(query);
+                        Console.WriteLine(">> Procedure Information <<\n");
+                        if (result is null)
+                        {
+                            Console.WriteLine($"No Procedure found with code {query}");
+                            break;
+                        }
+                        Console.WriteLine($"Procedure Code:  {result.Code}");
+                        Console.WriteLine($"Procedure Name:  {result.Name}");
                         break;
 
                     case "6":
