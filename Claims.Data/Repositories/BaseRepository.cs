@@ -16,6 +16,7 @@ namespace Claims.Data.Repositories
             _dal = new BaseDAL(_connectionString);
         }
 
+        public abstract TDto Insert(TDto dto);
         public abstract TDto GetById(int id);
     }
 }
