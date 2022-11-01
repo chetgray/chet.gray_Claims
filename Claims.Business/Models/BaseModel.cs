@@ -4,6 +4,6 @@ namespace Claims.Business.Models
 {
     public abstract class BaseModel : IBaseModel
     {
-        public int? Id { get; }
+        public int? Id { get; set; }
     }
 }

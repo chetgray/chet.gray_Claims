@@ -10,6 +10,11 @@ namespace Claims.Business.BLLs
         {
         }
 
+        public override IClaimModel Insert(IClaimModel model)
+        {
+            throw new System.NotImplementedException();
+        }
+
         public override IClaimModel GetById(int id)
         {
             throw new NotImplementedException();

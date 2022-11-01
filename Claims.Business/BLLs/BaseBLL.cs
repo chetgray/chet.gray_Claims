@@ -13,6 +13,7 @@ namespace Claims.Business.BLLs
                 ?? throw new System.ArgumentNullException(nameof(connectionString));
         }
 
+        public abstract TModel Insert(TModel model);
         public abstract TModel GetById(int id);
     }
 }

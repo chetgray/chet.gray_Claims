@@ -44,6 +44,7 @@
     <Compile Include="BLLs\BaseBLL.cs" />
     <Compile Include="BLLs\ClaimBLL.cs" />
     <Compile Include="BLLs\IBaseBLL.cs" />
+    <Compile Include="BLLs\ProcedureBLL.cs" />
     <Compile Include="Models\BaseModel.cs" />
     <Compile Include="Models\CarrierModel.cs" />
     <Compile Include="Models\ClaimModel.cs" />
