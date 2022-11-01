@@ -10,5 +10,5 @@
         CONSTRAINT [FK_Patient_PhoneNumberID] FOREIGN KEY ([PhoneNumberID]) REFERENCES [PhoneNumber]([PhoneNumberID])
     , [EmailAddressID] INT NOT NULL
         CONSTRAINT [FK_Patient_EmailAddressID] FOREIGN KEY ([EmailAddressID]) REFERENCES [EmailAddress]([EmailAddressID])
-    , CONSTRAINT [AK_Patient_FullName] UNIQUE ([LastName], [FirstName], [MiddleName])
+    , CONSTRAINT [AK_Patient] UNIQUE ([LastName], [FirstName], [MiddleName], [AddressID], [PhoneNumberID], [EmailAddressID])
 )
