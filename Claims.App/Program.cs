@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Configuration;
 
 using Claims.Business.Models;
 using Claims.Business.Models.Interfaces;
@@ -9,6 +10,10 @@ namespace Claims.App
     {
         static void Main()
         {
+            string connectionString = ConfigurationManager.ConnectionStrings[
+                "ClaimsData"
+            ].ConnectionString;
+
             bool shouldContinueApp = true;
             do
             {
