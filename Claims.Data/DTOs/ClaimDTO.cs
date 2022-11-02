@@ -1,7 +1,8 @@
 ﻿namespace Claims.Data.DTOs
 {
-    public class ClaimDTO : BaseDTO
+    public class ClaimDTO
     {
+        public int? Id { get; set; }
         public PatientDTO Patient { get; set; }
         public CarrierDTO Carrier { get; set; }
         public HospitalDTO Hospital { get; set; }

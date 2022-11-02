@@ -6,7 +6,7 @@ namespace Claims.Data.DAL
 {
     internal class BaseDAL : IBaseDAL
     {
-        private string _connectionString;
+        private readonly string _connectionString;
 
         internal BaseDAL(string connectionString)
         {

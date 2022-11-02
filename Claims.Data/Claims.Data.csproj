@@ -44,11 +44,9 @@
   <ItemGroup>
     <Compile Include="DAL\BaseDAL.cs" />
     <Compile Include="DAL\IBaseDAL.cs" />
-    <Compile Include="DTOs\BaseDTO.cs" />
     <Compile Include="DTOs\CarrierDTO.cs" />
     <Compile Include="DTOs\ClaimDTO.cs" />
     <Compile Include="DTOs\HospitalDTO.cs" />
-    <Compile Include="DTOs\IBaseDTO.cs" />
     <Compile Include="DTOs\PatientDTO.cs" />
     <Compile Include="DTOs\ProcedureDTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -56,7 +54,6 @@
     <Compile Include="Repositories\CarrierRepository.cs" />
     <Compile Include="Repositories\ClaimRepository.cs" />
     <Compile Include="Repositories\HospitalRepository.cs" />
-    <Compile Include="Repositories\IBaseRepository.cs" />
     <Compile Include="Repositories\PatientRepository.cs" />
     <Compile Include="Repositories\ProcedureRepository.cs" />
   </ItemGroup>

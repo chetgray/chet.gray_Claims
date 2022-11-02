@@ -1,14 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Data;
 
 using Claims.Data.DTOs;
 
 namespace Claims.Data.Repositories
 {
-    public class ProcedureRepository : BaseRepository<ProcedureDTO>
+    public class ProcedureRepository : BaseRepository
     {
-        public override ProcedureDTO Insert(ProcedureDTO dto)
+        public ProcedureDTO Insert(ProcedureDTO dto)
         {
             Dictionary<string, object> parameters = new Dictionary<string, object>
             {
@@ -26,11 +25,6 @@ namespace Claims.Data.Repositories
             ProcedureDTO insertedDto = ConvertToDto(dataTable.Rows[0]);
 
             return insertedDto;
-        }
-
-        public override ProcedureDTO GetById(int id)
-        {
-            throw new NotImplementedException();
         }
 
         public ProcedureDTO GetByCode(string code)

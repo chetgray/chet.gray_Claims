@@ -1,14 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Data;
 
 using Claims.Data.DTOs;
 
 namespace Claims.Data.Repositories
 {
-    public class CarrierRepository : BaseRepository<CarrierDTO>
+    public class CarrierRepository : BaseRepository
     {
-        public override CarrierDTO Insert(CarrierDTO dto)
+        public CarrierDTO Insert(CarrierDTO dto)
         {
             Dictionary<string, object> parameters = new Dictionary<string, object>
             {
@@ -23,11 +22,6 @@ namespace Claims.Data.Repositories
             CarrierDTO insertedDto = ConvertToDto(dataTable.Rows[0]);
 
             return insertedDto;
-        }
-
-        public override CarrierDTO GetById(int id)
-        {
-            throw new NotImplementedException();
         }
 
         public CarrierDTO GetByName(string name)

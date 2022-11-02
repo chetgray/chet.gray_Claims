@@ -5,9 +5,9 @@ using Claims.Data.DTOs;
 
 namespace Claims.Data.Repositories
 {
-    public class ClaimRepository : BaseRepository<ClaimDTO>
+    public class ClaimRepository : BaseRepository
     {
-        public override ClaimDTO Insert(ClaimDTO dto)
+        public ClaimDTO Insert(ClaimDTO dto)
         {
             Dictionary<string, object> parameters = new Dictionary<string, object>
             {
@@ -42,7 +42,7 @@ namespace Claims.Data.Repositories
             return insertedDto;
         }
 
-        public override ClaimDTO GetById(int id)
+        public ClaimDTO GetById(int id)
         {
             Dictionary<string, object> parameters = new Dictionary<string, object>
             {

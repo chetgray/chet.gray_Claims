@@ -1,14 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Data;
 
 using Claims.Data.DTOs;
 
 namespace Claims.Data.Repositories
 {
-    public class PatientRepository : BaseRepository<PatientDTO>
+    public class PatientRepository : BaseRepository
     {
-        public override PatientDTO Insert(PatientDTO dto)
+        public PatientDTO Insert(PatientDTO dto)
         {
             Dictionary<string, object> parameters = new Dictionary<string, object>
             {
@@ -30,11 +29,6 @@ namespace Claims.Data.Repositories
             PatientDTO insertedDto = ConvertToDto(dataTable.Rows[0]);
 
             return insertedDto;
-        }
-
-        public override PatientDTO GetById(int id)
-        {
-            throw new NotImplementedException();
         }
 
         public List<PatientDTO> GetAllByLastName(string lastName)
