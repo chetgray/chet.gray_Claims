@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Configuration;
 using System.Globalization;
 
@@ -15,11 +16,13 @@ namespace Claims.App
             string connectionString = ConfigurationManager.ConnectionStrings[
                 "ClaimsData"
             ].ConnectionString;
+            string query;
+            // BLLs can be expensive, don't instantiate until needed.
             ClaimBLL claimBLL = null;
+            PatientBLL patientBLL = null;
             HospitalBLL hospitalBLL = null;
             ProcedureBLL procedureBLL = null;
             CarrierBLL carrierBLL = null;
-            string query;
 
             bool shouldContinueApp = true;
             do
@@ -175,6 +178,31 @@ namespace Claims.App
 
                     case "3":
                         Console.WriteLine("** VIEW EXISTING PATIENT **\n");
+
+                        patientBLL = patientBLL ?? new PatientBLL(connectionString);
+                        Console.Write("Please enter the Patient's Last Name:  ");
+                        query = Console.ReadLine();
+                        List<IPatientModel> patientList = patientBLL.GetAllByLastName(query);
+                        Console.WriteLine(">> Patient Information <<\n");
+
+                        if (patientList.Count == 0)
+                        {
+                            Console.WriteLine($"No Patients found with Last Name '{query}'");
+                            break;
+                        }
+                        foreach (IPatientModel patient in patientList)
+                        {
+                            Console.WriteLine($"Patient First Name:  {patient.FirstName}");
+                            Console.WriteLine($"Patient Middle Name:  {patient.MiddleName}");
+                            Console.WriteLine($"Patient Last Name:  {patient.LastName}");
+                            Console.WriteLine($"Patient Address:  {patient.Street}");
+                            Console.WriteLine($"Patient City:  {patient.City}");
+                            Console.WriteLine($"Patient State:  {patient.State}");
+                            Console.WriteLine($"Patient Zip:  {patient.Zip}");
+                            Console.WriteLine($"Patient Phone Number:  {patient.PhoneNumber}");
+                            Console.WriteLine($"Patient Email Address:  {patient.EmailAddress}");
+                            Console.WriteLine();
+                        }
                         break;
 
                     case "4":
@@ -188,7 +216,7 @@ namespace Claims.App
 
                         if (hospital == null)
                         {
-                            Console.WriteLine($"No hospital found with name '{query}'.");
+                            Console.WriteLine($"No Hospital found with Name '{query}'");
                             break;
                         }
                         Console.WriteLine($"Hospital Name:  {hospital.Name}");
@@ -209,7 +237,7 @@ namespace Claims.App
 
                         if (procedure is null)
                         {
-                            Console.WriteLine($"No Procedure found with code '{query}'");
+                            Console.WriteLine($"No Procedure found with Code '{query}'");
                             break;
                         }
                         Console.WriteLine($"Procedure Code:  {procedure.Code}");
@@ -227,7 +255,7 @@ namespace Claims.App
 
                         if (carrier is null)
                         {
-                            Console.WriteLine($"No Insurance Carrier found with name '{query}'");
+                            Console.WriteLine($"No Insurance Carrier found with Name '{query}'");
                             break;
                         }
                         Console.WriteLine($"Insurance Carrier Name:  {carrier.Name}");

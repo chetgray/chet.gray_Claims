@@ -55,19 +55,6 @@ namespace Claims.Data.Repositories
             return dto;
         }
 
-        internal static List<ProcedureDTO> ConvertToDtoList(DataTable dataTable)
-        {
-            List<ProcedureDTO> dtos = new List<ProcedureDTO>();
-
-            foreach (DataRow row in dataTable.Rows)
-            {
-                ProcedureDTO dto = ConvertToDto(row);
-                dtos.Add(dto);
-            }
-
-            return dtos;
-        }
-
         internal static ProcedureDTO ConvertToDto(DataRow row)
         {
             ProcedureDTO dto = new ProcedureDTO
