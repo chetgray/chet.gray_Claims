@@ -7,12 +7,7 @@ namespace Claims.Business.BLLs
 {
     public class ClaimBLL : BaseBLL<IClaimModel>
     {
-        private readonly ClaimRepository _repository;
-
-        public ClaimBLL(string connectionString) : base(connectionString)
-        {
-            _repository = new ClaimRepository(_connectionString);
-        }
+        private readonly ClaimRepository _repository = new ClaimRepository();
 
         public override IClaimModel Insert(IClaimModel model)
         {

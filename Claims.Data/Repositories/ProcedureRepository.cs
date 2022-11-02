@@ -8,8 +8,6 @@ namespace Claims.Data.Repositories
 {
     public class ProcedureRepository : BaseRepository<ProcedureDTO>
     {
-        public ProcedureRepository(string connectionString) : base(connectionString) { }
-
         public override ProcedureDTO Insert(ProcedureDTO dto)
         {
             Dictionary<string, object> parameters = new Dictionary<string, object>

@@ -7,12 +7,7 @@ namespace Claims.Business.BLLs
 {
     public class HospitalBLL : BaseBLL<IHospitalModel>
     {
-        private readonly HospitalRepository _repository;
-
-        public HospitalBLL(string connectionString) : base(connectionString)
-        {
-            _repository = new HospitalRepository(connectionString);
-        }
+        private readonly HospitalRepository _repository = new HospitalRepository();
 
         public override IHospitalModel Insert(IHospitalModel model)
         {

@@ -9,12 +9,7 @@ namespace Claims.Business.BLLs
 {
     public class PatientBLL : BaseBLL<IPatientModel>
     {
-        private readonly PatientRepository _repository;
-
-        public PatientBLL(string connectionString) : base(connectionString)
-        {
-            _repository = new PatientRepository(_connectionString);
-        }
+        private readonly PatientRepository _repository = new PatientRepository();
 
         public override IPatientModel Insert(IPatientModel model)
         {

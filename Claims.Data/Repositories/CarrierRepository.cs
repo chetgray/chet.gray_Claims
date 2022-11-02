@@ -8,8 +8,6 @@ namespace Claims.Data.Repositories
 {
     public class CarrierRepository : BaseRepository<CarrierDTO>
     {
-        public CarrierRepository(string connectionString) : base(connectionString) { }
-
         public override CarrierDTO Insert(CarrierDTO dto)
         {
             Dictionary<string, object> parameters = new Dictionary<string, object>

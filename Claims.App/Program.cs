@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Configuration;
 using System.Globalization;
 
 using Claims.Business.BLLs;
@@ -13,9 +12,6 @@ namespace Claims.App
     {
         static void Main()
         {
-            string connectionString = ConfigurationManager.ConnectionStrings[
-                "ClaimsData"
-            ].ConnectionString;
             string queryString;
             int queryInt;
             // BLLs can be expensive, don't instantiate until needed.
@@ -45,7 +41,7 @@ namespace Claims.App
                     case "1":
                         Console.WriteLine("** NEW CLAIM ENTRY **");
 
-                        claimBLL = claimBLL ?? new ClaimBLL(connectionString);
+                        claimBLL = claimBLL ?? new ClaimBLL();
 
                         Console.WriteLine("\n>> Patient Information <<\n");
 
@@ -176,7 +172,7 @@ namespace Claims.App
                     case "2":
                         Console.WriteLine("** VIEW EXISTING CLAIM **\n");
 
-                        claimBLL = claimBLL ?? new ClaimBLL(connectionString);
+                        claimBLL = claimBLL ?? new ClaimBLL();
                         Console.Write("Please enter your Claim ID:  ");
                         while (!int.TryParse(Console.ReadLine(), out queryInt))
                         {
@@ -210,7 +206,7 @@ namespace Claims.App
                     case "3":
                         Console.WriteLine("** VIEW EXISTING PATIENT **\n");
 
-                        patientBLL = patientBLL ?? new PatientBLL(connectionString);
+                        patientBLL = patientBLL ?? new PatientBLL();
                         Console.Write("Please enter the Patient's Last Name:  ");
                         queryString = Console.ReadLine();
                         List<IPatientModel> patientList = patientBLL.GetAllByLastName(queryString);
@@ -229,7 +225,7 @@ namespace Claims.App
                     case "4":
                         Console.WriteLine("** VIEW EXISTING HOSPITAL **\n");
 
-                        hospitalBLL = hospitalBLL ?? new HospitalBLL(connectionString);
+                        hospitalBLL = hospitalBLL ?? new HospitalBLL();
                         Console.Write("Please enter the Hospital Name:  ");
                         queryString = Console.ReadLine();
                         IHospitalModel hospital = hospitalBLL.GetByName(queryString);
@@ -243,7 +239,7 @@ namespace Claims.App
 
                     case "5":
                         Console.WriteLine("** VIEW EXISTING PROCEDURE **\n");
-                        procedureBLL = procedureBLL ?? new ProcedureBLL(connectionString);
+                        procedureBLL = procedureBLL ?? new ProcedureBLL();
 
                         Console.Write("Please enter the Procedure Code:  ");
                         queryString = Console.ReadLine();
@@ -259,7 +255,7 @@ namespace Claims.App
                     case "6":
                         Console.WriteLine("** VIEW EXISTING INSURANCE CARRIER **\n");
 
-                        carrierBLL = carrierBLL ?? new CarrierBLL(connectionString);
+                        carrierBLL = carrierBLL ?? new CarrierBLL();
                         Console.Write("Please enter the Insurance Carrier Name:  ");
                         queryString = Console.ReadLine();
                         ICarrierModel carrier = carrierBLL.GetByName(queryString);

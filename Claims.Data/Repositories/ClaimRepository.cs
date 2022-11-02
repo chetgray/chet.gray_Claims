@@ -7,8 +7,6 @@ namespace Claims.Data.Repositories
 {
     public class ClaimRepository : BaseRepository<ClaimDTO>
     {
-        public ClaimRepository(string connectionString) : base(connectionString) { }
-
         public override ClaimDTO Insert(ClaimDTO dto)
         {
             Dictionary<string, object> parameters = new Dictionary<string, object>

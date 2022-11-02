@@ -8,8 +8,6 @@ namespace Claims.Data.Repositories
 {
     public class PatientRepository : BaseRepository<PatientDTO>
     {
-        public PatientRepository(string connectionString) : base(connectionString) { }
-
         public override PatientDTO Insert(PatientDTO dto)
         {
             Dictionary<string, object> parameters = new Dictionary<string, object>

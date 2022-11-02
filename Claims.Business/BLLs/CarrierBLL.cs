@@ -7,12 +7,7 @@ namespace Claims.Business.BLLs
 {
     public class CarrierBLL : BaseBLL<ICarrierModel>
     {
-        private readonly CarrierRepository _repository;
-
-        public CarrierBLL(string connectionString) : base(connectionString)
-        {
-            _repository = new CarrierRepository(_connectionString);
-        }
+        private readonly CarrierRepository _repository = new CarrierRepository();
 
         public override ICarrierModel Insert(ICarrierModel model)
         {

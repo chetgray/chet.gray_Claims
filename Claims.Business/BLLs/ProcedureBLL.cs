@@ -9,12 +9,7 @@ namespace Claims.Business.BLLs
 {
     public class ProcedureBLL : BaseBLL<IProcedureModel>
     {
-        private readonly ProcedureRepository _repository;
-
-        public ProcedureBLL(string connectionString) : base(connectionString)
-        {
-            _repository = new ProcedureRepository(_connectionString);
-        }
+        private readonly ProcedureRepository _repository = new ProcedureRepository();
 
         public override IProcedureModel Insert(IProcedureModel model)
         {
