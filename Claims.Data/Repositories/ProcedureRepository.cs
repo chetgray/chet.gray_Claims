@@ -14,17 +14,16 @@ namespace Claims.Data.Repositories
         {
             Dictionary<string, object> parameters = new Dictionary<string, object>
             {
-                { "@code", dto.Code },
-                { "@name", dto.Name },
+                { "@procedureCode", dto.Code },
+                { "@procedureName", dto.Name },
             };
-
             DataTable dataTable = _dal.ExecuteStoredProcedure(
                 "dbo.spA_Procedure_Insert",
                 parameters
             );
-            ProcedureDTO newDto = ConvertToDto(dataTable.Rows[0]);
+            ProcedureDTO insertedDto = ConvertToDto(dataTable.Rows[0]);
 
-            return newDto;
+            return insertedDto;
         }
 
         public override ProcedureDTO GetById(int id)
@@ -70,8 +69,8 @@ namespace Claims.Data.Repositories
             ProcedureDTO dto = new ProcedureDTO
             {
                 Id = (int)row["ProcedureID"],
-                Code = (string)row["Code"],
-                Name = (string)row["Name"],
+                Code = (string)row["ProcedureCode"],
+                Name = (string)row["ProcedureName"],
             };
 
             return dto;

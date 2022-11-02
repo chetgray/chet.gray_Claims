@@ -1,7 +1,9 @@
 ﻿CREATE PROCEDURE [dbo].[spA_Procedure_Insert]
-    @code varchar(50)
-    , @name nvarchar(50)
+    @procedureCode VARCHAR(50)
+    , @procedureName NVARCHAR(50)
 AS
+
+DECLARE @procedureID INT;
 
 INSERT
 INTO [Procedure] (
@@ -9,17 +11,18 @@ INTO [Procedure] (
     , [Name]
 )
 VALUES (
-    @code
-    , @name
+    @procedureCode
+    , @procedureName
 )
 ;
+SELECT @procedureID = @@IDENTITY;
 
 SELECT
     [ProcedureID]
-    , [Code]
-    , [Name]
+    , [Procedure].[Code] AS [ProcedureCode]
+    , [Procedure].[Name] AS [ProcedureName]
 FROM
     [Procedure]
 WHERE
-    [ProcedureID] = SCOPE_IDENTITY()
+    [ProcedureID] = @procedureID
 ;
