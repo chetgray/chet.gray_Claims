@@ -32,6 +32,25 @@ namespace Claims.Data.Repositories
             throw new NotImplementedException();
         }
 
+        public CarrierDTO GetByName(string name)
+        {
+            Dictionary<string, object> parameters = new Dictionary<string, object>
+            {
+                { "@carrierName", name },
+            };
+            DataTable dataTable = _dal.ExecuteStoredProcedure(
+                "dbo.spA_Carrier_GetByName",
+                parameters
+            );
+            if (dataTable.Rows.Count == 0)
+            {
+                return null;
+            }
+            CarrierDTO dto = ConvertToDto(dataTable.Rows[0]);
+
+            return dto;
+        }
+
         internal static CarrierDTO ConvertToDto(DataRow row)
         {
             CarrierDTO dto = new CarrierDTO

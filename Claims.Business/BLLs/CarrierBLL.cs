@@ -1,12 +1,18 @@
 ﻿using Claims.Business.Models;
 using Claims.Business.Models.Interfaces;
 using Claims.Data.DTOs;
+using Claims.Data.Repositories;
 
 namespace Claims.Business.BLLs
 {
     public class CarrierBLL : BaseBLL<ICarrierModel>
     {
-        public CarrierBLL(string connectionString) : base(connectionString) { }
+        private readonly CarrierRepository _repository;
+
+        public CarrierBLL(string connectionString) : base(connectionString)
+        {
+            _repository = new CarrierRepository(_connectionString);
+        }
 
         public override ICarrierModel Insert(ICarrierModel model)
         {
@@ -16,6 +22,14 @@ namespace Claims.Business.BLLs
         public override ICarrierModel GetById(int id)
         {
             throw new System.NotImplementedException();
+        }
+
+        public ICarrierModel GetByName(string name)
+        {
+            CarrierDTO dto = _repository.GetByName(name);
+            ICarrierModel model = ConvertToModel(dto);
+
+            return model;
         }
 
         internal static CarrierDTO ConvertToDto(ICarrierModel model)

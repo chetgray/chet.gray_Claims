@@ -17,6 +17,8 @@ namespace Claims.App
             ].ConnectionString;
             ClaimBLL claimBLL = null;
             ProcedureBLL procedureBLL = null;
+            CarrierBLL carrierBLL = null;
+            string query;
 
             bool shouldContinueApp = true;
             do
@@ -177,20 +179,33 @@ namespace Claims.App
 
                         procedureBLL = procedureBLL ?? new ProcedureBLL(connectionString);
                         Console.Write("\nPlease enter the Procedure Code:  ");
-                        string query = Console.ReadLine();
-                        IProcedureModel result = procedureBLL.GetByCode(query);
+                        query = Console.ReadLine();
+                        IProcedureModel procedure = procedureBLL.GetByCode(query);
                         Console.WriteLine(">> Procedure Information <<\n");
-                        if (result is null)
+                        if (procedure is null)
                         {
                             Console.WriteLine($"No Procedure found with code {query}");
                             break;
                         }
-                        Console.WriteLine($"Procedure Code:  {result.Code}");
-                        Console.WriteLine($"Procedure Name:  {result.Name}");
+                        Console.WriteLine($"Procedure Code:  {procedure.Code}");
+                        Console.WriteLine($"Procedure Name:  {procedure.Name}");
                         break;
 
                     case "6":
                         Console.WriteLine("** VIEW EXISTING INSURANCE CARRIER **");
+
+                        carrierBLL = carrierBLL ?? new CarrierBLL(connectionString);
+                        Console.Write("\nPlease enter the Insurance Carrier Name:  ");
+                        query = Console.ReadLine();
+                        ICarrierModel carrier = carrierBLL.GetByName(query);
+                        Console.WriteLine(">> Insurance Information <<\n");
+                        if (carrier is null)
+                        {
+                            Console.WriteLine($"No Insurance Carrier found with name {query}");
+                            break;
+                        }
+                        Console.WriteLine($"Insurance Carrier Name:  {carrier.Name}");
+                        Console.WriteLine($"Insurance Customer Service Phone Number:  {carrier.CustomerServicePhoneNumber}");
                         break;
 
                     default:
