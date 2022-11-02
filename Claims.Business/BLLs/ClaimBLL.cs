@@ -1,6 +1,4 @@
-﻿using System;
-
-using Claims.Business.Models;
+﻿using Claims.Business.Models;
 using Claims.Business.Models.Interfaces;
 using Claims.Data.DTOs;
 using Claims.Data.Repositories;
@@ -26,7 +24,10 @@ namespace Claims.Business.BLLs
 
         public override IClaimModel GetById(int id)
         {
-            throw new NotImplementedException();
+            ClaimDTO dto = _repository.GetById(id);
+            IClaimModel model = ConvertToModel(dto);
+
+            return model;
         }
 
         private ClaimDTO ConvertToDto(IClaimModel model)

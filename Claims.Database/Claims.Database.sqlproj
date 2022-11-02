@@ -81,6 +81,7 @@
     <Build Include="Stored Procedures\spA_Carrier_GetByName.sql" />
     <Build Include="Stored Procedures\spA_Hospital_GetByName.sql" />
     <Build Include="Stored Procedures\spA_Patient_GetAllByLastName.sql" />
+    <Build Include="Stored Procedures\spA_Claim_GetById.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Claims.Database.local.publish.xml" />

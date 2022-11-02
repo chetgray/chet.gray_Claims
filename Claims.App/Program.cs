@@ -16,7 +16,8 @@ namespace Claims.App
             string connectionString = ConfigurationManager.ConnectionStrings[
                 "ClaimsData"
             ].ConnectionString;
-            string query;
+            string queryString;
+            int queryInt;
             // BLLs can be expensive, don't instantiate until needed.
             ClaimBLL claimBLL = null;
             PatientBLL patientBLL = null;
@@ -107,7 +108,7 @@ namespace Claims.App
                             )
                         )
                         {
-                            Console.WriteLine("ERROR:  Please enter a valid amount.");
+                            Console.WriteLine("ERROR:  Invalid currency amount");
                             Console.Write("Claim Amount Outstanding:  ");
                         }
                         Console.Write("Amount Insurance is Responsible For:  ");
@@ -121,11 +122,11 @@ namespace Claims.App
                             )
                         )
                         {
-                            Console.WriteLine("ERROR:  Please enter a valid amount.");
+                            Console.WriteLine("ERROR:  Invalid currency amount");
                             Console.Write("Amount Insurance is Responsible For:  ");
                         }
 
-                        IClaimModel claim = new ClaimModel
+                        IClaimModel newClaim = new ClaimModel
                         {
                             Patient = new PatientModel
                             {
@@ -161,10 +162,10 @@ namespace Claims.App
                             InsuranceResponsibilityAmount = claimInsuranceResponsibilityAmount,
                         };
                         Console.WriteLine(
-                            $"Amount Patient is Responsible for:  {claim.PatientResponsibilityAmount:C}"
+                            $"Amount Patient is Responsible for:  {newClaim.PatientResponsibilityAmount:C}"
                         );
 
-                        IClaimModel insertedClaim = claimBLL.Insert(claim);
+                        IClaimModel insertedClaim = claimBLL.Insert(newClaim);
 
                         Console.WriteLine(
                             $"\n** New Claim Created.  Claim ID is {insertedClaim.Id} **\n"
@@ -174,6 +175,36 @@ namespace Claims.App
 
                     case "2":
                         Console.WriteLine("** VIEW EXISTING CLAIM **\n");
+
+                        claimBLL = claimBLL ?? new ClaimBLL(connectionString);
+                        Console.Write("Please enter your Claim ID:  ");
+                        while (!int.TryParse(Console.ReadLine(), out queryInt))
+                        {
+                            Console.WriteLine("ERROR:  ID must be an integer");
+                            Console.Write("Please enter your Claim ID:  ");
+                        }
+                        IClaimModel claim = claimBLL.GetById(queryInt);
+                        if (claim is null)
+                        {
+                            Console.WriteLine($"No Claim found with ID '{queryInt}'");
+                            break;
+                        }
+                        WritePatientInformation(claim.Patient);
+                        WriteCarrierInformation(claim.Carrier);
+                        WriteHospitalInformation(claim.Hospital);
+                        WriteProcedureInformation(claim.Procedure);
+
+                        Console.WriteLine("\n>> Additional Claim Information <<\n");
+
+                        Console.WriteLine(
+                            $"Claim Amount Outstanding:  {claim.OutstandingAmount:C}"
+                        );
+                        Console.WriteLine(
+                            $"Amount Insurance is Responsible For:  {claim.InsuranceResponsibilityAmount:C}"
+                        );
+                        Console.WriteLine(
+                            $"Amount Patient is Responsible For:  {claim.PatientResponsibilityAmount:C}"
+                        );
                         break;
 
                     case "3":
@@ -181,11 +212,11 @@ namespace Claims.App
 
                         patientBLL = patientBLL ?? new PatientBLL(connectionString);
                         Console.Write("Please enter the Patient's Last Name:  ");
-                        query = Console.ReadLine();
-                        List<IPatientModel> patientList = patientBLL.GetAllByLastName(query);
+                        queryString = Console.ReadLine();
+                        List<IPatientModel> patientList = patientBLL.GetAllByLastName(queryString);
                         if (patientList.Count == 0)
                         {
-                            Console.WriteLine($"No Patients found with Last Name '{query}'");
+                            Console.WriteLine($"No Patients found with Last Name '{queryString}'");
                             break;
                         }
                         foreach (IPatientModel patient in patientList)
@@ -200,11 +231,11 @@ namespace Claims.App
 
                         hospitalBLL = hospitalBLL ?? new HospitalBLL(connectionString);
                         Console.Write("Please enter the Hospital Name:  ");
-                        query = Console.ReadLine();
-                        IHospitalModel hospital = hospitalBLL.GetByName(query);
-                        if (hospital == null)
+                        queryString = Console.ReadLine();
+                        IHospitalModel hospital = hospitalBLL.GetByName(queryString);
+                        if (hospital is null)
                         {
-                            Console.WriteLine($"No Hospital found with Name '{query}'");
+                            Console.WriteLine($"No Hospital found with Name '{queryString}'");
                             break;
                         }
                         WriteHospitalInformation(hospital);
@@ -215,11 +246,11 @@ namespace Claims.App
                         procedureBLL = procedureBLL ?? new ProcedureBLL(connectionString);
 
                         Console.Write("Please enter the Procedure Code:  ");
-                        query = Console.ReadLine();
-                        IProcedureModel procedure = procedureBLL.GetByCode(query);
+                        queryString = Console.ReadLine();
+                        IProcedureModel procedure = procedureBLL.GetByCode(queryString);
                         if (procedure is null)
                         {
-                            Console.WriteLine($"No Procedure found with Code '{query}'");
+                            Console.WriteLine($"No Procedure found with Code '{queryString}'");
                             break;
                         }
                         WriteProcedureInformation(procedure);
@@ -230,11 +261,13 @@ namespace Claims.App
 
                         carrierBLL = carrierBLL ?? new CarrierBLL(connectionString);
                         Console.Write("Please enter the Insurance Carrier Name:  ");
-                        query = Console.ReadLine();
-                        ICarrierModel carrier = carrierBLL.GetByName(query);
+                        queryString = Console.ReadLine();
+                        ICarrierModel carrier = carrierBLL.GetByName(queryString);
                         if (carrier is null)
                         {
-                            Console.WriteLine($"No Insurance Carrier found with Name '{query}'");
+                            Console.WriteLine(
+                                $"No Insurance Carrier found with Name '{queryString}'"
+                            );
                             break;
                         }
                         WriteCarrierInformation(carrier);

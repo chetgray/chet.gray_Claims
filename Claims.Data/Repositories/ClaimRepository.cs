@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Data;
 
 using Claims.Data.DTOs;
@@ -47,7 +46,18 @@ namespace Claims.Data.Repositories
 
         public override ClaimDTO GetById(int id)
         {
-            throw new NotImplementedException();
+            Dictionary<string, object> parameters = new Dictionary<string, object>
+            {
+                { "@claimID", id }
+            };
+            DataTable dataTable = _dal.ExecuteStoredProcedure("dbo.spA_Claim_GetById", parameters);
+            if (dataTable.Rows.Count == 0)
+            {
+                return null;
+            }
+            ClaimDTO dto = ConvertToDto(dataTable.Rows[0]);
+
+            return dto;
         }
 
         internal static ClaimDTO ConvertToDto(DataRow row)

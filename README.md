@@ -2,9 +2,9 @@
 
 > Create a Claims Console Application.
 > 
-> - [ ] Client ABC Hospital needs a very basic Claims application.
+> - [x] Client ABC Hospital needs a very basic Claims application.
 > - [x] This should be a console application.
-> - [ ] The user should be able to View a Claim.
+> - [x] The user should be able to View a Claim.
 > - [x] The user should be able to Add a Claim.
 > - [x] The user should be able to View a Hospital by Name
 > - [x] The user should be able to View a Patient by Last Name.
@@ -47,8 +47,8 @@
 >   Claim Amount Outstanding, the Insurance Responsibility Amount, and
 >   the Patient Responsibility Amount.  But for the purposes of our
 >   exercise, just have the user enter that on the screen.
-> - [ ] **Important**:
->   - [ ] Ensure that you do not write duplicate entries to your tables.
+> - [x] **Important**:
+>   - [x] Ensure that you do not write duplicate entries to your tables.
 >     For example, if the user enters "Anthem" as the insurance carrier,
 >     and if Anthem is already in the table, don't add it again, but use
 >     the one that's there.
