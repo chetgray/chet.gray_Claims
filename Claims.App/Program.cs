@@ -183,8 +183,6 @@ namespace Claims.App
                         Console.Write("Please enter the Patient's Last Name:  ");
                         query = Console.ReadLine();
                         List<IPatientModel> patientList = patientBLL.GetAllByLastName(query);
-                        Console.WriteLine(">> Patient Information <<\n");
-
                         if (patientList.Count == 0)
                         {
                             Console.WriteLine($"No Patients found with Last Name '{query}'");
@@ -192,15 +190,7 @@ namespace Claims.App
                         }
                         foreach (IPatientModel patient in patientList)
                         {
-                            Console.WriteLine($"Patient First Name:  {patient.FirstName}");
-                            Console.WriteLine($"Patient Middle Name:  {patient.MiddleName}");
-                            Console.WriteLine($"Patient Last Name:  {patient.LastName}");
-                            Console.WriteLine($"Patient Address:  {patient.Street}");
-                            Console.WriteLine($"Patient City:  {patient.City}");
-                            Console.WriteLine($"Patient State:  {patient.State}");
-                            Console.WriteLine($"Patient Zip:  {patient.Zip}");
-                            Console.WriteLine($"Patient Phone Number:  {patient.PhoneNumber}");
-                            Console.WriteLine($"Patient Email Address:  {patient.EmailAddress}");
+                            WritePatientInformation(patient);
                             Console.WriteLine();
                         }
                         break;
@@ -212,18 +202,12 @@ namespace Claims.App
                         Console.Write("Please enter the Hospital Name:  ");
                         query = Console.ReadLine();
                         IHospitalModel hospital = hospitalBLL.GetByName(query);
-                        Console.WriteLine(">> Hospital Information <<\n");
-
                         if (hospital == null)
                         {
                             Console.WriteLine($"No Hospital found with Name '{query}'");
                             break;
                         }
-                        Console.WriteLine($"Hospital Name:  {hospital.Name}");
-                        Console.WriteLine($"Hospital Address:  {hospital.Street}");
-                        Console.WriteLine($"Hospital City:  {hospital.City}");
-                        Console.WriteLine($"Hospital State:  {hospital.State}");
-                        Console.WriteLine($"Hospital Zip:  {hospital.Zip}");
+                        WriteHospitalInformation(hospital);
                         break;
 
                     case "5":
@@ -233,15 +217,12 @@ namespace Claims.App
                         Console.Write("Please enter the Procedure Code:  ");
                         query = Console.ReadLine();
                         IProcedureModel procedure = procedureBLL.GetByCode(query);
-                        Console.WriteLine(">> Procedure Information <<\n");
-
                         if (procedure is null)
                         {
                             Console.WriteLine($"No Procedure found with Code '{query}'");
                             break;
                         }
-                        Console.WriteLine($"Procedure Code:  {procedure.Code}");
-                        Console.WriteLine($"Procedure Name:  {procedure.Name}");
+                        WriteProcedureInformation(procedure);
                         break;
 
                     case "6":
@@ -251,17 +232,12 @@ namespace Claims.App
                         Console.Write("Please enter the Insurance Carrier Name:  ");
                         query = Console.ReadLine();
                         ICarrierModel carrier = carrierBLL.GetByName(query);
-                        Console.WriteLine(">> Insurance Information <<\n");
-
                         if (carrier is null)
                         {
                             Console.WriteLine($"No Insurance Carrier found with Name '{query}'");
                             break;
                         }
-                        Console.WriteLine($"Insurance Carrier Name:  {carrier.Name}");
-                        Console.WriteLine(
-                            $"Insurance Customer Service Phone Number:  {carrier.CustomerServicePhoneNumber}"
-                        );
+                        WriteCarrierInformation(carrier);
                         break;
 
                     default:
@@ -275,6 +251,50 @@ namespace Claims.App
                     shouldContinueApp = false;
                 }
             } while (shouldContinueApp);
+        }
+
+        private static void WritePatientInformation(IPatientModel patient)
+        {
+            Console.WriteLine(">> Patient Information <<\n");
+
+            Console.WriteLine($"Patient First Name:  {patient.FirstName}");
+            Console.WriteLine($"Patient Middle Name:  {patient.MiddleName}");
+            Console.WriteLine($"Patient Last Name:  {patient.LastName}");
+            Console.WriteLine($"Patient Address:  {patient.Street}");
+            Console.WriteLine($"Patient City:  {patient.City}");
+            Console.WriteLine($"Patient State:  {patient.State}");
+            Console.WriteLine($"Patient Zip:  {patient.Zip}");
+            Console.WriteLine($"Patient Phone Number:  {patient.PhoneNumber}");
+            Console.WriteLine($"Patient Email Address:  {patient.EmailAddress}");
+        }
+
+        private static void WriteHospitalInformation(IHospitalModel hospital)
+        {
+            Console.WriteLine(">> Hospital Information <<\n");
+
+            Console.WriteLine($"Hospital Name:  {hospital.Name}");
+            Console.WriteLine($"Hospital Address:  {hospital.Street}");
+            Console.WriteLine($"Hospital City:  {hospital.City}");
+            Console.WriteLine($"Hospital State:  {hospital.State}");
+            Console.WriteLine($"Hospital Zip:  {hospital.Zip}");
+        }
+
+        private static void WriteProcedureInformation(IProcedureModel procedure)
+        {
+            Console.WriteLine(">> Procedure Information <<\n");
+
+            Console.WriteLine($"Procedure Code:  {procedure.Code}");
+            Console.WriteLine($"Procedure Name:  {procedure.Name}");
+        }
+
+        private static void WriteCarrierInformation(ICarrierModel carrier)
+        {
+            Console.WriteLine(">> Insurance Information <<\n");
+
+            Console.WriteLine($"Insurance Carrier Name:  {carrier.Name}");
+            Console.WriteLine(
+                $"Insurance Customer Service Phone Number:  {carrier.CustomerServicePhoneNumber}"
+            );
         }
     }
 }
