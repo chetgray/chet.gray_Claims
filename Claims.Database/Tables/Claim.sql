@@ -10,5 +10,5 @@
     , [ProcedureID] INT NOT NULL
         CONSTRAINT [FK_Claim_ProcedureID] FOREIGN KEY ([ProcedureID]) REFERENCES [Procedure]([ProcedureID])
     , [OutstandingAmount] MONEY NOT NULL
-    , [InsuranceResponsiblilityAmount] MONEY NOT NULL
+    , [InsuranceResponsibilityAmount] MONEY NOT NULL
 )
