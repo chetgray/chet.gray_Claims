@@ -172,6 +172,23 @@ namespace Claims.App
 
                     case "4":
                         Console.WriteLine("** VIEW EXISTING HOSPITAL **");
+
+                        hospitalBLL = hospitalBLL ?? new HospitalBLL(connectionString);
+                        Console.Write("\nPlease enter the Hospital Name:  ");
+                        query = Console.ReadLine();
+                        IHospitalModel hospital = hospitalBLL.GetByName(query);
+                        Console.WriteLine(">> Hospital Information <<\n");
+
+                        if (hospital == null)
+                        {
+                            Console.WriteLine($"No hospital found with name '{query}'.");
+                            break;
+                        }
+                        Console.WriteLine($"Hospital Name:  {hospital.Name}");
+                        Console.WriteLine($"Hospital Address:  {hospital.Street}");
+                        Console.WriteLine($"Hospital City:  {hospital.City}");
+                        Console.WriteLine($"Hospital State:  {hospital.State}");
+                        Console.WriteLine($"Hospital Zip:  {hospital.Zip}");
                         break;
 
                     case "5":

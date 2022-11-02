@@ -38,6 +38,25 @@ namespace Claims.Data.Repositories
             throw new NotImplementedException();
         }
 
+        public HospitalDTO GetByName(string name)
+        {
+            Dictionary<string, object> parameters = new Dictionary<string, object>
+            {
+                { "@hospitalName", name },
+            };
+            DataTable dataTable = _dal.ExecuteStoredProcedure(
+                "dbo.spA_Hospital_GetByName",
+                parameters
+            );
+            if (dataTable.Rows.Count == 0)
+            {
+                return null;
+            }
+            HospitalDTO dto = ConvertToDto(dataTable.Rows[0]);
+
+            return dto;
+        }
+
         internal static HospitalDTO ConvertToDto(DataRow row)
         {
             HospitalDTO dto = new HospitalDTO

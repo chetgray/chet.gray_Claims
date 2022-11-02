@@ -1,21 +1,35 @@
 ﻿using Claims.Business.Models;
 using Claims.Business.Models.Interfaces;
 using Claims.Data.DTOs;
+using Claims.Data.Repositories;
 
 namespace Claims.Business.BLLs
 {
-    internal class HospitalBLL : BaseBLL<IHospitalModel>
+    public class HospitalBLL : BaseBLL<IHospitalModel>
     {
-        public HospitalBLL(string connectionString) : base(connectionString) { }
+        private readonly HospitalRepository _repository;
+
+        public HospitalBLL(string connectionString) : base(connectionString)
+        {
+            _repository = new HospitalRepository(connectionString);
+        }
+
+        public override IHospitalModel Insert(IHospitalModel model)
+        {
+            throw new System.NotImplementedException();
+        }
 
         public override IHospitalModel GetById(int id)
         {
             throw new System.NotImplementedException();
         }
 
-        public override IHospitalModel Insert(IHospitalModel model)
+        public IHospitalModel GetByName(string name)
         {
-            throw new System.NotImplementedException();
+            HospitalDTO dto = _repository.GetByName(name);
+            IHospitalModel model = ConvertToModel(dto);
+
+            return model;
         }
 
         internal static HospitalDTO ConvertToDto(IHospitalModel model)

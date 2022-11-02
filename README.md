@@ -6,7 +6,7 @@
 > - [x] This should be a console application.
 > - [ ] The user should be able to View a Claim.
 > - [x] The user should be able to Add a Claim.
-> - [ ] The user should be able to View a Hospital by Name
+> - [x] The user should be able to View a Hospital by Name
 > - [ ] The user should be able to View a Patient by Last Name.
 > - [x] A Claim consists of the following fields:
 >   - [x] Claim ID (this should be an auto-generated numeric)
