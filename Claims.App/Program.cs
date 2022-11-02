@@ -16,6 +16,7 @@ namespace Claims.App
                 "ClaimsData"
             ].ConnectionString;
             ClaimBLL claimBLL = null;
+            HospitalBLL hospitalBLL = null;
             ProcedureBLL procedureBLL = null;
             CarrierBLL carrierBLL = null;
             string query;
@@ -43,6 +44,7 @@ namespace Claims.App
                         claimBLL = claimBLL ?? new ClaimBLL(connectionString);
 
                         Console.WriteLine("\n>> Patient Information <<\n");
+
                         Console.Write("Patient First Name:  ");
                         string patientFirstName = Console.ReadLine();
                         Console.Write("Patient Middle Name:  ");
@@ -62,13 +64,15 @@ namespace Claims.App
                         Console.Write("Patient Email Address:  ");
                         string patientEmailAddress = Console.ReadLine();
 
-                        Console.WriteLine(">> Insurance Information <<");
+                        Console.WriteLine("\n>> Insurance Information <<\n");
+
                         Console.Write("Insurance Carrier Name:  ");
                         string carrierName = Console.ReadLine();
                         Console.Write("Insurance Customer Service Phone Number:  ");
                         string carrierCustomerServicePhoneNumber = Console.ReadLine();
 
-                        Console.WriteLine(">> Hospital Information <<");
+                        Console.WriteLine("\n>> Hospital Information <<\n");
+
                         Console.Write("Hospital Name:  ");
                         string hospitalName = Console.ReadLine();
                         Console.Write("Hospital Address:  ");
@@ -80,13 +84,15 @@ namespace Claims.App
                         Console.Write("Hospital Zip:  ");
                         string hospitalZip = Console.ReadLine();
 
-                        Console.WriteLine(">> Procedure Information <<");
+                        Console.WriteLine("\n>> Procedure Information <<\n");
+
                         Console.Write("Procedure Code:  ");
                         string procedureCode = Console.ReadLine();
                         Console.Write("Procedure Name:  ");
                         string procedureName = Console.ReadLine();
 
-                        Console.WriteLine(">> Additional Claim Information <<");
+                        Console.WriteLine("\n>> Additional Claim Information <<\n");
+
                         Console.Write("Claim Amount Outstanding:  ");
                         decimal claimOutstandingAmount;
                         while (
@@ -160,21 +166,22 @@ namespace Claims.App
                         Console.WriteLine(
                             $"\n** New Claim Created.  Claim ID is {insertedClaim.Id} **\n"
                         );
+
                         break;
 
                     case "2":
-                        Console.WriteLine("** VIEW EXISTING CLAIM **");
+                        Console.WriteLine("** VIEW EXISTING CLAIM **\n");
                         break;
 
                     case "3":
-                        Console.WriteLine("** VIEW EXISTING PATIENT **");
+                        Console.WriteLine("** VIEW EXISTING PATIENT **\n");
                         break;
 
                     case "4":
-                        Console.WriteLine("** VIEW EXISTING HOSPITAL **");
+                        Console.WriteLine("** VIEW EXISTING HOSPITAL **\n");
 
                         hospitalBLL = hospitalBLL ?? new HospitalBLL(connectionString);
-                        Console.Write("\nPlease enter the Hospital Name:  ");
+                        Console.Write("Please enter the Hospital Name:  ");
                         query = Console.ReadLine();
                         IHospitalModel hospital = hospitalBLL.GetByName(query);
                         Console.WriteLine(">> Hospital Information <<\n");
@@ -192,16 +199,17 @@ namespace Claims.App
                         break;
 
                     case "5":
-                        Console.WriteLine("** VIEW EXISTING PROCEDURE **");
-
+                        Console.WriteLine("** VIEW EXISTING PROCEDURE **\n");
                         procedureBLL = procedureBLL ?? new ProcedureBLL(connectionString);
-                        Console.Write("\nPlease enter the Procedure Code:  ");
+
+                        Console.Write("Please enter the Procedure Code:  ");
                         query = Console.ReadLine();
                         IProcedureModel procedure = procedureBLL.GetByCode(query);
                         Console.WriteLine(">> Procedure Information <<\n");
+
                         if (procedure is null)
                         {
-                            Console.WriteLine($"No Procedure found with code {query}");
+                            Console.WriteLine($"No Procedure found with code '{query}'");
                             break;
                         }
                         Console.WriteLine($"Procedure Code:  {procedure.Code}");
@@ -209,20 +217,23 @@ namespace Claims.App
                         break;
 
                     case "6":
-                        Console.WriteLine("** VIEW EXISTING INSURANCE CARRIER **");
+                        Console.WriteLine("** VIEW EXISTING INSURANCE CARRIER **\n");
 
                         carrierBLL = carrierBLL ?? new CarrierBLL(connectionString);
-                        Console.Write("\nPlease enter the Insurance Carrier Name:  ");
+                        Console.Write("Please enter the Insurance Carrier Name:  ");
                         query = Console.ReadLine();
                         ICarrierModel carrier = carrierBLL.GetByName(query);
                         Console.WriteLine(">> Insurance Information <<\n");
+
                         if (carrier is null)
                         {
-                            Console.WriteLine($"No Insurance Carrier found with name {query}");
+                            Console.WriteLine($"No Insurance Carrier found with name '{query}'");
                             break;
                         }
                         Console.WriteLine($"Insurance Carrier Name:  {carrier.Name}");
-                        Console.WriteLine($"Insurance Customer Service Phone Number:  {carrier.CustomerServicePhoneNumber}");
+                        Console.WriteLine(
+                            $"Insurance Customer Service Phone Number:  {carrier.CustomerServicePhoneNumber}"
+                        );
                         break;
 
                     default:
