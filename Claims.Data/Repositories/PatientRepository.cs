@@ -39,6 +39,25 @@ namespace Claims.Data.Repositories
             throw new NotImplementedException();
         }
 
+        public List<PatientDTO> GetAllByLastName(string lastName)
+        {
+            Dictionary<string, object> parameters = new Dictionary<string, object>
+            {
+                { "@patientLastName", lastName },
+            };
+            DataTable dataTable = _dal.ExecuteStoredProcedure(
+                "dbo.spA_Patient_GetAllByLastName",
+                parameters
+            );
+            List<PatientDTO> dtoList = new List<PatientDTO>();
+            foreach (DataRow row in dataTable.Rows)
+            {
+                dtoList.Add(ConvertToDto(row));
+            }
+
+            return dtoList;
+        }
+
         internal static PatientDTO ConvertToDto(DataRow row)
         {
             PatientDTO dto = new PatientDTO
