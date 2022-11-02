@@ -35,7 +35,10 @@ namespace Claims.Data.DAL
                 }
                 using (SqlDataAdapter adapter = new SqlDataAdapter(command))
                 {
-                    adapter.Fill(dataTable);
+                    // Get the last data table in the dataset.
+                    DataSet dataSet = new DataSet();
+                    adapter.Fill(dataSet);
+                    dataTable = dataSet.Tables[dataSet.Tables.Count - 1];
                 }
             }
 
