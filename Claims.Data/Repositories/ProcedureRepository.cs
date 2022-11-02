@@ -21,6 +21,10 @@ namespace Claims.Data.Repositories
                 "dbo.spA_Procedure_Insert",
                 parameters
             );
+            if (dataTable.Rows.Count == 0)
+            {
+                return null;
+            }
             ProcedureDTO insertedDto = ConvertToDto(dataTable.Rows[0]);
 
             return insertedDto;
@@ -51,7 +55,7 @@ namespace Claims.Data.Repositories
             return dto;
         }
 
-        private static List<ProcedureDTO> ConvertToDtoList(DataTable dataTable)
+        internal static List<ProcedureDTO> ConvertToDtoList(DataTable dataTable)
         {
             List<ProcedureDTO> dtos = new List<ProcedureDTO>();
 
@@ -64,7 +68,7 @@ namespace Claims.Data.Repositories
             return dtos;
         }
 
-        private static ProcedureDTO ConvertToDto(DataRow row)
+        internal static ProcedureDTO ConvertToDto(DataRow row)
         {
             ProcedureDTO dto = new ProcedureDTO
             {
