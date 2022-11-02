@@ -97,4 +97,6 @@ FROM
     INNER JOIN [Zip]          AS [P_Zip]          ON [P_Address].[ZipID]        = [P_Zip].[ZipID]
     INNER JOIN [PhoneNumber]  AS [P_PhoneNumber]  ON [Patient].[PhoneNumberID]  = [P_PhoneNumber].[PhoneNumberID]
     INNER JOIN [EmailAddress] AS [P_EmailAddress] ON [Patient].[EmailAddressID] = [P_EmailAddress].[EmailAddressID]
+WHERE
+    [Patient].[PatientID] = @patientID
 ;
