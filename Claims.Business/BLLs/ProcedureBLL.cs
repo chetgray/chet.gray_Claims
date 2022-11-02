@@ -1,27 +1,20 @@
-﻿using System;
-
-using Claims.Business.Models;
+﻿using Claims.Business.Models;
 using Claims.Business.Models.Interfaces;
 using Claims.Data.DTOs;
 using Claims.Data.Repositories;
 
 namespace Claims.Business.BLLs
 {
-    public class ProcedureBLL : BaseBLL<IProcedureModel>
+    public class ProcedureBLL
     {
         private readonly ProcedureRepository _repository = new ProcedureRepository();
 
-        public override IProcedureModel Insert(IProcedureModel model)
+        public IProcedureModel Insert(IProcedureModel model)
         {
             ProcedureDTO dto = ConvertToDto(model);
             IProcedureModel insertedModel = ConvertToModel(_repository.Insert(dto));
 
             return insertedModel;
-        }
-
-        public override IProcedureModel GetById(int id)
-        {
-            throw new NotImplementedException();
         }
 
         public IProcedureModel GetByCode(string code)

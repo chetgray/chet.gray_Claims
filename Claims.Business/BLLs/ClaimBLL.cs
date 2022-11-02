@@ -5,11 +5,11 @@ using Claims.Data.Repositories;
 
 namespace Claims.Business.BLLs
 {
-    public class ClaimBLL : BaseBLL<IClaimModel>
+    public class ClaimBLL
     {
         private readonly ClaimRepository _repository = new ClaimRepository();
 
-        public override IClaimModel Insert(IClaimModel model)
+        public IClaimModel Insert(IClaimModel model)
         {
             ClaimDTO dto = ConvertToDto(model);
             IClaimModel insertedModel = ConvertToModel(_repository.Insert(dto));
@@ -17,7 +17,7 @@ namespace Claims.Business.BLLs
             return insertedModel;
         }
 
-        public override IClaimModel GetById(int id)
+        public IClaimModel GetById(int id)
         {
             ClaimDTO dto = _repository.GetById(id);
             IClaimModel model = ConvertToModel(dto);

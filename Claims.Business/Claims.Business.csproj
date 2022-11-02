@@ -41,18 +41,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BLLs\BaseBLL.cs" />
     <Compile Include="BLLs\CarrierBLL.cs" />
     <Compile Include="BLLs\ClaimBLL.cs" />
     <Compile Include="BLLs\HospitalBLL.cs" />
-    <Compile Include="BLLs\IBaseBLL.cs" />
     <Compile Include="BLLs\PatientBLL.cs" />
     <Compile Include="BLLs\ProcedureBLL.cs" />
-    <Compile Include="Models\BaseModel.cs" />
     <Compile Include="Models\CarrierModel.cs" />
     <Compile Include="Models\ClaimModel.cs" />
     <Compile Include="Models\HospitalModel.cs" />
-    <Compile Include="Models\Interfaces\IBaseModel.cs" />
     <Compile Include="Models\Interfaces\ICarrierModel.cs" />
     <Compile Include="Models\Interfaces\IClaimModel.cs" />
     <Compile Include="Models\Interfaces\IHospitalModel.cs" />

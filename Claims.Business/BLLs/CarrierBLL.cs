@@ -5,19 +5,9 @@ using Claims.Data.Repositories;
 
 namespace Claims.Business.BLLs
 {
-    public class CarrierBLL : BaseBLL<ICarrierModel>
+    public class CarrierBLL
     {
         private readonly CarrierRepository _repository = new CarrierRepository();
-
-        public override ICarrierModel Insert(ICarrierModel model)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public override ICarrierModel GetById(int id)
-        {
-            throw new System.NotImplementedException();
-        }
 
         public ICarrierModel GetByName(string name)
         {

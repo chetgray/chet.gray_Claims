@@ -1,7 +1,8 @@
 ﻿namespace Claims.Business.Models.Interfaces
 {
-    public interface IPatientModel : IBaseModel
+    public interface IPatientModel
     {
+        int? Id { get; set; }
         string LastName { get; set; }
         string FirstName { get; set; }
         string MiddleName { get; set; }

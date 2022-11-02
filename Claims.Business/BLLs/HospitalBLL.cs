@@ -5,19 +5,9 @@ using Claims.Data.Repositories;
 
 namespace Claims.Business.BLLs
 {
-    public class HospitalBLL : BaseBLL<IHospitalModel>
+    public class HospitalBLL
     {
         private readonly HospitalRepository _repository = new HospitalRepository();
-
-        public override IHospitalModel Insert(IHospitalModel model)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public override IHospitalModel GetById(int id)
-        {
-            throw new System.NotImplementedException();
-        }
 
         public IHospitalModel GetByName(string name)
         {

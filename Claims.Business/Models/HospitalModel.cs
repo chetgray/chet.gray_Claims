@@ -2,8 +2,9 @@
 
 namespace Claims.Business.Models
 {
-    public class HospitalModel : BaseModel, IHospitalModel
+    public class HospitalModel : IHospitalModel
     {
+        public int? Id { get; set; }
         public string Name { get; set; }
         public string Street { get; set; }
         public string City { get; set; }

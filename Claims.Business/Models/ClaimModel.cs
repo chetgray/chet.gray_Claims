@@ -2,8 +2,9 @@
 
 namespace Claims.Business.Models
 {
-    public class ClaimModel : BaseModel, IClaimModel
+    public class ClaimModel : IClaimModel
     {
+        public int? Id { get; set; }
         public IPatientModel Patient { get; set; }
         public ICarrierModel Carrier { get; set; }
         public IHospitalModel Hospital { get; set; }

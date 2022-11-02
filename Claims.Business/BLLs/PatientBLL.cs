@@ -7,19 +7,9 @@ using Claims.Data.Repositories;
 
 namespace Claims.Business.BLLs
 {
-    public class PatientBLL : BaseBLL<IPatientModel>
+    public class PatientBLL
     {
         private readonly PatientRepository _repository = new PatientRepository();
-
-        public override IPatientModel Insert(IPatientModel model)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public override IPatientModel GetById(int id)
-        {
-            throw new System.NotImplementedException();
-        }
 
         public List<IPatientModel> GetAllByLastName(string lastName)
         {

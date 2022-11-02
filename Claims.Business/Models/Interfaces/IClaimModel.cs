@@ -1,7 +1,8 @@
 ﻿namespace Claims.Business.Models.Interfaces
 {
-    public interface IClaimModel : IBaseModel
+    public interface IClaimModel
     {
+        int? Id { get; set; }
         IPatientModel Patient { get; set; }
         ICarrierModel Carrier { get; set; }
         IHospitalModel Hospital { get; set; }
