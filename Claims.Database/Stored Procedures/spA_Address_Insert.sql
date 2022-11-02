@@ -114,5 +114,5 @@ FROM
     INNER JOIN [State] ON [City].[StateID]   = [State].[StateID]
     INNER JOIN [Zip]   ON [Address].[ZipID]  = [Zip].[ZipID]
 WHERE
-    [AddressID] = @addressID
+    [Address].[AddressID] = @addressID
 ;

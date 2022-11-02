@@ -35,7 +35,7 @@ namespace Claims.Data.Repositories
                 { "@claimOutstandingAmount", dto.OutstandingAmount },
                 { "@claimInsuranceResponsibilityAmount", dto.InsuranceResponsibilityAmount },
             };
-            DataTable dataTable = _dal.ExecuteStoredProcedure("spA_Claim_Insert", parameters);
+            DataTable dataTable = _dal.ExecuteStoredProcedure("dbo.spA_Claim_Insert", parameters);
             if (dataTable.Rows.Count == 0)
             {
                 return null;

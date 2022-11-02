@@ -24,5 +24,5 @@ SELECT
 FROM
     [Procedure]
 WHERE
-    [ProcedureID] = @procedureID
+    [Procedure].[ProcedureID] = @procedureID
 ;

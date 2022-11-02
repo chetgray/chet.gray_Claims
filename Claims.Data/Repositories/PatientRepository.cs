@@ -24,7 +24,7 @@ namespace Claims.Data.Repositories
                 { "@patientPhoneNumber", dto.PhoneNumber },
                 { "@patientEmailAddress", dto.EmailAddress },
             };
-            DataTable dataTable = _dal.ExecuteStoredProcedure("spA_Patient_Insert", parameters);
+            DataTable dataTable = _dal.ExecuteStoredProcedure("dbo.spA_Patient_Insert", parameters);
             if (dataTable.Rows.Count == 0)
             {
                 return null;

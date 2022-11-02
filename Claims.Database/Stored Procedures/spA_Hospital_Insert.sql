@@ -52,5 +52,5 @@ FROM
     INNER JOIN [State]   AS [H_State]   ON [H_City].[StateID]     = [H_State].[StateID]
     INNER JOIN [Zip]     AS [H_Zip]     ON [H_Address].[ZipID]    = [H_Zip].[ZipID]
 WHERE
-    [HospitalID] = @hospitalID
+    [Hospital].[HospitalID] = @hospitalID
 ;

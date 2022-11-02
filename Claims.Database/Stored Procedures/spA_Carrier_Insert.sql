@@ -45,5 +45,5 @@ FROM
     [Carrier]
     INNER JOIN [PhoneNumber] AS [C_PhoneNumber] ON [Carrier].[CustomerServicePhoneNumberID] = [C_PhoneNumber].[PhoneNumberID]
 WHERE
-    [CarrierID] = @carrierID
+    [Carrier].[CarrierID] = @carrierID
 ;

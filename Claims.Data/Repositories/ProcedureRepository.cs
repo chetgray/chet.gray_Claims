@@ -39,7 +39,7 @@ namespace Claims.Data.Repositories
         {
             Dictionary<string, object> parameters = new Dictionary<string, object>
             {
-                { "@code", code }
+                { "@procedureCode", code }
             };
 
             DataTable dataTable = _dal.ExecuteStoredProcedure(
