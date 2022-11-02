@@ -103,7 +103,7 @@ SELECT @addressID = SCOPE_IDENTITY();
 -- Select Address --
 --------------------
 SELECT
-    [AddressID]
+    [Address].[AddressID]
     , [Address].[Street] AS [Street]
     , [City].[Name]      AS [City]
     , [State].[Name]     AS [State]

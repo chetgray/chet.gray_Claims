@@ -79,7 +79,7 @@ SELECT @patientID = SCOPE_IDENTITY();
 -- Select Patient with Address, PhoneNumber, and EmailAddress --
 ----------------------------------------------------------------
 SELECT
-    [PatientID]
+    [Patient].[PatientID]
     , [Patient].[LastName]            AS [PatientLastName]
     , [Patient].[FirstName]           AS [PatientFirstName]
     , [Patient].[MiddleName]          AS [PatientMiddleName]

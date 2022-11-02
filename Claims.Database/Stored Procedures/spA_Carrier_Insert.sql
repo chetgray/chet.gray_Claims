@@ -38,7 +38,7 @@ SELECT @carrierID = SCOPE_IDENTITY();
 -- Select Carrier with PhoneNumber --
 -------------------------------------
 SELECT
-    [CarrierID]
+    [Carrier].[CarrierID]
     , [Carrier].[Name]              AS [CarrierName]
     , [C_PhoneNumber].[PhoneNumber] AS [CarrierCustomerServicePhoneNumber]
 FROM

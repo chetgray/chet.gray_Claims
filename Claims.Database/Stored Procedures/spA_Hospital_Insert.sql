@@ -39,7 +39,7 @@ SELECT @hospitalID = SCOPE_IDENTITY();
 -- Select Hospital with Address --
 ----------------------------------
 SELECT
-    [HospitalID]
+    [Hospital].[HospitalID]
     , [Hospital].[Name]    AS [HospitalName]
     , [H_Address].[Street] AS [HospitalStreet]
     , [H_City].[Name]      AS [HospitalCity]

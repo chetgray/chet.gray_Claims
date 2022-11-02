@@ -18,7 +18,7 @@ VALUES (
 SELECT @procedureID = @@IDENTITY;
 
 SELECT
-    [ProcedureID]
+    [Procedure].[ProcedureID]
     , [Procedure].[Code] AS [ProcedureCode]
     , [Procedure].[Name] AS [ProcedureName]
 FROM
