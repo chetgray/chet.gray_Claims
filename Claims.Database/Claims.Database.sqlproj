@@ -73,6 +73,11 @@
     <Build Include="Tables\State.sql" />
     <Build Include="Stored Procedures\spA_Procedure_Insert.sql" />
     <Build Include="Stored Procedures\spA_Procedure_GetByCode.sql" />
+    <Build Include="Stored Procedures\spA_Claim_Insert.sql" />
+    <Build Include="Stored Procedures\spA_Patient_Insert.sql" />
+    <Build Include="Stored Procedures\spA_Carrier_Insert.sql" />
+    <Build Include="Stored Procedures\spA_Hospital_Insert.sql" />
+    <Build Include="Stored Procedures\spA_Address_Insert.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Claims.Database.local.publish.xml" />
