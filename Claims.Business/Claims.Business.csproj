@@ -4,17 +4,16 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{91A22784-5616-49A7-AF17-FB9CC5FD1202}</ProjectGuid>
-    <OutputType>Exe</OutputType>
-    <RootNamespace>Claims.App</RootNamespace>
-    <AssemblyName>Claims.App</AssemblyName>
+    <ProjectGuid>{A7455098-D351-400F-ADFD-C7F6ADD816B2}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Claims.Business</RootNamespace>
+    <AssemblyName>Claims.Business</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -24,7 +23,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -43,16 +41,27 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Program.cs" />
+    <Compile Include="BLLs\CarrierBLL.cs" />
+    <Compile Include="BLLs\ClaimBLL.cs" />
+    <Compile Include="BLLs\HospitalBLL.cs" />
+    <Compile Include="BLLs\PatientBLL.cs" />
+    <Compile Include="BLLs\ProcedureBLL.cs" />
+    <Compile Include="Models\CarrierModel.cs" />
+    <Compile Include="Models\ClaimModel.cs" />
+    <Compile Include="Models\HospitalModel.cs" />
+    <Compile Include="Models\Interfaces\ICarrierModel.cs" />
+    <Compile Include="Models\Interfaces\IClaimModel.cs" />
+    <Compile Include="Models\Interfaces\IHospitalModel.cs" />
+    <Compile Include="Models\Interfaces\IPatientModel.cs" />
+    <Compile Include="Models\Interfaces\IProcedureModel.cs" />
+    <Compile Include="Models\PatientModel.cs" />
+    <Compile Include="Models\ProcedureModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Claims.Business\Claims.Business.csproj">
-      <Project>{a7455098-d351-400f-adfd-c7f6add816b2}</Project>
-      <Name>Claims.Business</Name>
+    <ProjectReference Include="..\Claims.Data\Claims.Data.csproj">
+      <Project>{b46cb571-4f1e-430f-860a-9b66b10543f8}</Project>
+      <Name>Claims.Data</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
