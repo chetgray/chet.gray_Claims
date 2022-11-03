@@ -3,7 +3,7 @@
 AS
 
 SELECT TOP 1
-    [Procedure].[ProcedureID]
+      [Procedure].[Id]   AS [ProcedureId]
     , [Procedure].[Code] AS [ProcedureCode]
     , [Procedure].[Name] AS [ProcedureName]
 FROM

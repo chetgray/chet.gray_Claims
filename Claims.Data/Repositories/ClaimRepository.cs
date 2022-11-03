@@ -46,7 +46,7 @@ namespace Claims.Data.Repositories
         {
             Dictionary<string, object> parameters = new Dictionary<string, object>
             {
-                { "@claimID", id }
+                { "@claimId", id }
             };
             DataTable dataTable = _dal.ExecuteStoredProcedure("dbo.spA_Claim_GetById", parameters);
             if (dataTable.Rows.Count == 0)

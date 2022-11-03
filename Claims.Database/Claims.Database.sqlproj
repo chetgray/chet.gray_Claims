@@ -86,4 +86,7 @@
   <ItemGroup>
     <None Include="Claims.Database.local.publish.xml" />
   </ItemGroup>
+  <ItemGroup>
+    <RefactorLog Include="Claims.Database.refactorlog" />
+  </ItemGroup>
 </Project>

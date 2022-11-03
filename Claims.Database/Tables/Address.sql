@@ -1,10 +1,10 @@
 ﻿CREATE TABLE [dbo].[Address]
 (
-    [AddressID] INT IDENTITY NOT NULL CONSTRAINT [PK_Address_AddressID] PRIMARY KEY
+    [Id] INT IDENTITY NOT NULL CONSTRAINT [PK_Address_Id] PRIMARY KEY
     , [Street] NVARCHAR(50) NOT NULL
-    , [CityID] INT NULL
-        CONSTRAINT [FK_Address_CityID] FOREIGN KEY ([CityID]) REFERENCES [City]([CityID])
-    , [ZipID] INT NULL
-        CONSTRAINT [FK_Address_ZipID] FOREIGN KEY ([ZipID]) REFERENCES [Zip]([ZipID])
-    , CONSTRAINT [CK_Address_CityIDZipIDNotBothNull] CHECK (([CityID] IS NOT NULL) OR ([ZipID] IS NOT NULL))
+    , [CityId] INT NULL
+        CONSTRAINT [FK_Address_CityId] FOREIGN KEY ([CityId]) REFERENCES [City]([Id])
+    , [ZipId] INT NULL
+        CONSTRAINT [FK_Address_ZipId] FOREIGN KEY ([ZipId]) REFERENCES [Zip]([Id])
+    , CONSTRAINT [CK_Address_CityIdZipIdNotBothNull] CHECK (([CityId] IS NOT NULL) OR ([ZipId] IS NOT NULL))
 )
