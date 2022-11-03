@@ -1,28 +1,28 @@
 ﻿CREATE PROCEDURE [dbo].[spA_Procedure_Insert]
-    @procedureCode VARCHAR(50)
+      @procedureCode VARCHAR(50)
     , @procedureName NVARCHAR(50)
 AS
 
-DECLARE @procedureID INT;
+DECLARE @procedureId INT;
 
 INSERT
 INTO [Procedure] (
-    [Code]
+      [Code]
     , [Name]
 )
 VALUES (
-    @procedureCode
+      @procedureCode
     , @procedureName
 )
 ;
-SELECT @procedureID = @@IDENTITY;
+SELECT @procedureId = @@IDENTITY;
 
 SELECT
-    [Procedure].[ProcedureID]
+      [Procedure].[Id]   AS [ProcedureId]
     , [Procedure].[Code] AS [ProcedureCode]
     , [Procedure].[Name] AS [ProcedureName]
 FROM
     [Procedure]
 WHERE
-    [Procedure].[ProcedureID] = @procedureID
+    [Procedure].[Id] = @procedureId
 ;

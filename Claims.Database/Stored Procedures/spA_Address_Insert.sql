@@ -1,24 +1,24 @@
 ﻿CREATE PROCEDURE [dbo].[spA_Address_Insert]
-    @street NVARCHAR(50)
-    , @city NVARCHAR(50)
-    , @state NVARCHAR(50)
-    , @zip CHAR(5)
+      @street NVARCHAR(50)
+    , @city   NVARCHAR(50)
+    , @state  NVARCHAR(50)
+    , @zip    CHAR(5)
 AS
 
-DECLARE @addressID INT;
+DECLARE @addressId INT;
 
 -------------------------------------------------
 -- Check if State exists, insert if it doesn't --
 -------------------------------------------------
-DECLARE @stateID INT;
+DECLARE @stateId INT;
 SELECT
-    @stateID = [StateID]
+    @stateId = [State].[Id]
 FROM
     [State]
 WHERE
-    [Name] = @state
+    [State].[Name] = @state
 ;
-IF (@stateID IS NULL)
+IF (@stateId IS NULL)
 BEGIN
     INSERT
     INTO [State] (
@@ -28,48 +28,48 @@ BEGIN
         @state
     )
     ;
-    SELECT @stateID = SCOPE_IDENTITY();
+    SELECT @stateId = SCOPE_IDENTITY();
 END
 
 ------------------------------------------------
 -- Check if City exists, insert if it doesn't --
 ------------------------------------------------
-DECLARE @cityID INT;
+DECLARE @cityId INT;
 SELECT
-    @cityID = [CityID]
+    @cityId = [City].[Id]
 FROM
     [City]
 WHERE
-    [Name] = @city
-    AND [StateID] = @stateID
+        [City].[Name]    = @city
+    AND [City].[StateId] = @stateId
 ;
-IF (@cityID IS NULL)
+IF (@cityId IS NULL)
 BEGIN
     INSERT
     INTO [City] (
-        [Name]
-        , [StateID]
+          [Name]
+        , [StateId]
     )
     VALUES (
-        @city
-        , @stateID
+          @city
+        , @stateId
     )
     ;
-    SELECT @cityID = SCOPE_IDENTITY();
+    SELECT @cityId = SCOPE_IDENTITY();
 END
 
 -----------------------------------------------
 -- Check if Zip exists, insert if it doesn't --
 -----------------------------------------------
-DECLARE @zipID INT;
+DECLARE @zipId INT;
 SELECT
-    @zipID = [ZipID]
+    @zipId = [Zip].[Id]
 FROM
     [Zip]
 WHERE
-    [Code] = @zip
+    [Zip].[Code] = @zip
 ;
-IF (@zipID IS NULL)
+IF (@zipId IS NULL)
 BEGIN
     INSERT
     INTO [Zip] (
@@ -79,7 +79,7 @@ BEGIN
         @zip
     )
     ;
-    SELECT @zipID = SCOPE_IDENTITY();
+    SELECT @zipId = SCOPE_IDENTITY();
 END
 
 --------------------
@@ -88,31 +88,31 @@ END
 INSERT
 INTO [Address] (
     [Street]
-    , [CityID]
-    , [ZipID]
+    , [CityId]
+    , [ZipId]
 )
 VALUES (
     @street
-    , @cityID
-    , @zipID
+    , @cityId
+    , @zipId
 )
 ;
-SELECT @addressID = SCOPE_IDENTITY();
+SELECT @addressId = SCOPE_IDENTITY();
 
 --------------------
 -- Select Address --
 --------------------
 SELECT
-    [Address].[AddressID]
+      [Address].[Id]     AS [AddressId]
     , [Address].[Street] AS [Street]
     , [City].[Name]      AS [City]
     , [State].[Name]     AS [State]
     , [Zip].[Code]       AS [Zip]
 FROM
-    [Address]
-    INNER JOIN [City]  ON [Address].[CityID] = [City].[CityID]
-    INNER JOIN [State] ON [City].[StateID]   = [State].[StateID]
-    INNER JOIN [Zip]   ON [Address].[ZipID]  = [Zip].[ZipID]
+               [Address]
+    INNER JOIN [City]  ON [Address].[CityId] = [City].[Id]
+    INNER JOIN [State] ON [City].[StateId]   = [State].[Id]
+    INNER JOIN [Zip]   ON [Address].[ZipId]  = [Zip].[Id]
 WHERE
-    [Address].[AddressID] = @addressID
+    [Address].[Id] = @addressId
 ;

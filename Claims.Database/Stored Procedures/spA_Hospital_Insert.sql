@@ -1,56 +1,56 @@
 ﻿CREATE PROCEDURE [dbo].[spA_Hospital_Insert]
-    @hospitalName NVARCHAR(50)
+      @hospitalName   NVARCHAR(50)
     , @hospitalStreet NVARCHAR(50)
-    , @hospitalCity NVARCHAR(50)
-    , @hospitalState NVARCHAR(50)
-    , @hospitalZip CHAR(5)
+    , @hospitalCity   NVARCHAR(50)
+    , @hospitalState  NVARCHAR(50)
+    , @hospitalZip    CHAR(5)
 AS
 
-DECLARE @hospitalID INT;
+DECLARE @hospitalId INT;
 
 --------------------
 -- Insert Address --
 --------------------
-DECLARE @addressID INT;
+DECLARE @addressId INT;
 EXEC [spA_Address_Insert]
-    @hospitalStreet
+      @hospitalStreet
     , @hospitalCity
     , @hospitalState
     , @hospitalZip
 ;
-SELECT @addressID = @@IDENTITY;
+SELECT @addressId = @@IDENTITY;
 
 ---------------------
 -- Insert Hospital --
 ---------------------
 INSERT
 INTO [Hospital] (
-    [Name]
-    , [AddressID]
+      [Name]
+    , [AddressId]
 )
 VALUES (
-    @hospitalName
-    , @addressID
+      @hospitalName
+    , @addressId
 )
 ;
-SELECT @hospitalID = SCOPE_IDENTITY();
+SELECT @hospitalId = SCOPE_IDENTITY();
 
 ----------------------------------
 -- Select Hospital with Address --
 ----------------------------------
 SELECT
-    [Hospital].[HospitalID]
+      [Hospital].[Id]      AS [HospitalId]
     , [Hospital].[Name]    AS [HospitalName]
     , [H_Address].[Street] AS [HospitalStreet]
     , [H_City].[Name]      AS [HospitalCity]
     , [H_State].[Name]     AS [HospitalState]
     , [H_Zip].[Code]       AS [HospitalZip]
 FROM
-    [Hospital]
-    INNER JOIN [Address] AS [H_Address] ON [Hospital].[AddressID] = [H_Address].[AddressID]
-    INNER JOIN [City]    AS [H_City]    ON [H_Address].[CityID]   = [H_City].[CityID]
-    INNER JOIN [State]   AS [H_State]   ON [H_City].[StateID]     = [H_State].[StateID]
-    INNER JOIN [Zip]     AS [H_Zip]     ON [H_Address].[ZipID]    = [H_Zip].[ZipID]
+               [Hospital]
+    INNER JOIN [Address] AS [H_Address] ON [Hospital].[AddressId] = [H_Address].[Id]
+    INNER JOIN [City]    AS [H_City]    ON [H_Address].[CityId]   = [H_City].[Id]
+    INNER JOIN [State]   AS [H_State]   ON [H_City].[StateId]     = [H_State].[Id]
+    INNER JOIN [Zip]     AS [H_Zip]     ON [H_Address].[ZipId]    = [H_Zip].[Id]
 WHERE
-    [Hospital].[HospitalID] = @hospitalID
+    [Hospital].[Id] = @hospitalId
 ;

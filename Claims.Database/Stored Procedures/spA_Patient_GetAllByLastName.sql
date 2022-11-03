@@ -3,7 +3,7 @@
 AS
 
 SELECT
-    [Patient].[PatientID]
+      [Patient].[Id]                  AS [PatientId]
     , [Patient].[LastName]            AS [PatientLastName]
     , [Patient].[FirstName]           AS [PatientFirstName]
     , [Patient].[MiddleName]          AS [PatientMiddleName]
@@ -14,13 +14,13 @@ SELECT
     , [P_PhoneNumber].[PhoneNumber]   AS [PatientPhoneNumber]
     , [P_EmailAddress].[EmailAddress] AS [PatientEmailAddress]
 FROM
-    [Patient]
-    INNER JOIN [Address]      AS [P_Address]      ON [Patient].[AddressID]      = [P_Address].[AddressID]
-    INNER JOIN [City]         AS [P_City]         ON [P_Address].[CityID]       = [P_City].[CityID]
-    INNER JOIN [State]        AS [P_State]        ON [P_City].[StateID]         = [P_State].[StateID]
-    INNER JOIN [Zip]          AS [P_Zip]          ON [P_Address].[ZipID]        = [P_Zip].[ZipID]
-    INNER JOIN [PhoneNumber]  AS [P_PhoneNumber]  ON [Patient].[PhoneNumberID]  = [P_PhoneNumber].[PhoneNumberID]
-    INNER JOIN [EmailAddress] AS [P_EmailAddress] ON [Patient].[EmailAddressID] = [P_EmailAddress].[EmailAddressID]
+               [Patient]
+    INNER JOIN [Address]      AS [P_Address]      ON [Patient].[AddressId]      = [P_Address].[Id]
+    INNER JOIN [City]         AS [P_City]         ON [P_Address].[CityId]       = [P_City].[Id]
+    INNER JOIN [State]        AS [P_State]        ON [P_City].[StateId]         = [P_State].[Id]
+    INNER JOIN [Zip]          AS [P_Zip]          ON [P_Address].[ZipId]        = [P_Zip].[Id]
+    INNER JOIN [PhoneNumber]  AS [P_PhoneNumber]  ON [Patient].[PhoneNumberId]  = [P_PhoneNumber].[Id]
+    INNER JOIN [EmailAddress] AS [P_EmailAddress] ON [Patient].[EmailAddressId] = [P_EmailAddress].[Id]
 WHERE
     [Patient].[LastName] = @patientLastName
 ;

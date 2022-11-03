@@ -1,5 +1,5 @@
 ﻿CREATE TABLE [dbo].[EmailAddress]
 (
-    [EmailAddressID] INT IDENTITY NOT NULL CONSTRAINT [PK_EmailAddress_EmailAddressID] PRIMARY KEY
+    [Id] INT IDENTITY NOT NULL CONSTRAINT [PK_EmailAddress_Id] PRIMARY KEY
     , [EmailAddress] VARCHAR(50) NOT NULL
 )

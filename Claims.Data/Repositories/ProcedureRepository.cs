@@ -51,7 +51,7 @@ namespace Claims.Data.Repositories
         {
             ProcedureDTO dto = new ProcedureDTO
             {
-                Id = (int)row["ProcedureID"],
+                Id = (int)row["ProcedureId"],
                 Code = (string)row["ProcedureCode"],
                 Name = (string)row["ProcedureName"],
             };

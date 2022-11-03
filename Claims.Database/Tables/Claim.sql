@@ -1,14 +1,14 @@
 ﻿CREATE TABLE [dbo].[Claim]
 (
-    [ClaimID] INT IDENTITY NOT NULL CONSTRAINT [PK_Claim_ClaimID] PRIMARY KEY
-    , [PatientID] INT NOT NULL
-        CONSTRAINT [FK_Claim_PatientID] FOREIGN KEY ([PatientID]) REFERENCES [Patient]([PatientID])
-    , [CarrierID] INT NOT NULL
-        CONSTRAINT [FK_Claim_CarrierID] FOREIGN KEY ([CarrierID]) REFERENCES [Carrier]([CarrierID])
-    , [HospitalID] INT NOT NULL
-        CONSTRAINT [FK_Claim_HospitalID] FOREIGN KEY ([HospitalID]) REFERENCES [Hospital]([HospitalID])
-    , [ProcedureID] INT NOT NULL
-        CONSTRAINT [FK_Claim_ProcedureID] FOREIGN KEY ([ProcedureID]) REFERENCES [Procedure]([ProcedureID])
+    [Id] INT IDENTITY NOT NULL CONSTRAINT [PK_Claim_Id] PRIMARY KEY
+    , [PatientId] INT NOT NULL
+        CONSTRAINT [FK_Claim_PatientId] FOREIGN KEY ([PatientId]) REFERENCES [Patient]([Id])
+    , [CarrierId] INT NOT NULL
+        CONSTRAINT [FK_Claim_CarrierId] FOREIGN KEY ([CarrierId]) REFERENCES [Carrier]([Id])
+    , [HospitalId] INT NOT NULL
+        CONSTRAINT [FK_Claim_HospitalId] FOREIGN KEY ([HospitalId]) REFERENCES [Hospital]([Id])
+    , [ProcedureId] INT NOT NULL
+        CONSTRAINT [FK_Claim_ProcedureId] FOREIGN KEY ([ProcedureId]) REFERENCES [Procedure]([Id])
     , [OutstandingAmount] MONEY NOT NULL
     , [InsuranceResponsibilityAmount] MONEY NOT NULL
 )

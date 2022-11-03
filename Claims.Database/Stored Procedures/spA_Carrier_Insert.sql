@@ -1,14 +1,14 @@
 ﻿CREATE PROCEDURE [dbo].[spA_Carrier_Insert]
-    @carrierName NVARCHAR(50)
+      @carrierName                       NVARCHAR(50)
     , @carrierCustomerServicePhoneNumber NVARCHAR(50)
 AS
 
-DECLARE @carrierID INT;
+DECLARE @carrierId INT;
 
 ------------------------
 -- Insert PhoneNumber --
 ------------------------
-DECLARE @phoneNumberID INT;
+DECLARE @customerServicePhoneNumberId INT;
 INSERT
 INTO [PhoneNumber] (
     [PhoneNumber]
@@ -17,33 +17,33 @@ VALUES (
     @carrierCustomerServicePhoneNumber
 )
 ;
-SELECT @phoneNumberID = SCOPE_IDENTITY();
+SELECT @customerServicePhoneNumberId = SCOPE_IDENTITY();
 
 --------------------
 -- Insert Carrier --
 --------------------
 INSERT
 INTO [Carrier] (
-    [Name]
-    , [CustomerServicePhoneNumberID]
+      [Name]
+    , [CustomerServicePhoneNumberId]
 )
 VALUES (
-    @carrierName
-    , @phoneNumberID
+      @carrierName
+    , @customerServicePhoneNumberId
 )
 ;
-SELECT @carrierID = SCOPE_IDENTITY();
+SELECT @carrierId = SCOPE_IDENTITY();
 
 -------------------------------------
 -- Select Carrier with PhoneNumber --
 -------------------------------------
 SELECT
-    [Carrier].[CarrierID]
+      [Carrier].[Id]                AS [CarrierId]
     , [Carrier].[Name]              AS [CarrierName]
     , [C_PhoneNumber].[PhoneNumber] AS [CarrierCustomerServicePhoneNumber]
 FROM
-    [Carrier]
-    INNER JOIN [PhoneNumber] AS [C_PhoneNumber] ON [Carrier].[CustomerServicePhoneNumberID] = [C_PhoneNumber].[PhoneNumberID]
+               [Carrier]
+    INNER JOIN [PhoneNumber] AS [C_PhoneNumber] ON [Carrier].[CustomerServicePhoneNumberId] = [C_PhoneNumber].[Id]
 WHERE
-    [Carrier].[CarrierID] = @carrierID
+    [Carrier].[Id] = @carrierId
 ;
