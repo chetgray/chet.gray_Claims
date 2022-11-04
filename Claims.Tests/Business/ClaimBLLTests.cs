@@ -154,5 +154,20 @@ namespace Claims.Tests.Business
             // Assert
             Assert.IsNull(retrievedClaim);
         }
+
+        [TestMethod]
+        public void TestGetByIdExistingReturnsRecordWithThatId()
+        {
+            // Arrange
+            ClaimBLL claimBLL = new ClaimBLL();
+            IClaimModel claim = new ClaimModel();
+            IClaimModel insertedClaim = claimBLL.Insert(claim);
+
+            // Act
+            IClaimModel retrievedClaim = claimBLL.GetById((int)insertedClaim.Id);
+
+            // Assert
+            Assert.AreEqual(insertedClaim.Id, retrievedClaim.Id);
+        }
     }
 }
