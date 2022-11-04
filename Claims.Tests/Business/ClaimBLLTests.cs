@@ -30,5 +30,30 @@ namespace Claims.Tests.Business
             // Assert
             Assert.IsNotNull(insertedClaim);
         }
+
+        /// <summary>
+        /// Tests that inserting an second empty Claim creates a new record.
+        /// </summary>
+        /// <remarks>
+        ///     All claims are unique, and we can have multiple claims with the
+        ///     same Patient, Carrier, Hospital, and Procedure, so inserting a
+        ///     claim with the same field data as one that already exists should
+        ///     still create a new record.
+        /// </remarks>
+        [TestMethod]
+        public void TestInsertIdenticalEmptyCreatesNewRecord()
+        {
+            // Arrange
+            ClaimBLL claimBLL = new ClaimBLL();
+            IClaimModel firstClaim = new ClaimModel();
+            IClaimModel secondClaim = new ClaimModel();
+            claimBLL.Insert(firstClaim);
+
+            // Act
+            IClaimModel insertedClaim = claimBLL.Insert(secondClaim);
+
+            // Assert
+            Assert.IsNotNull(insertedClaim);
+        }
     }
 }
