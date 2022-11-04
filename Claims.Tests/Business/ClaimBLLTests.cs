@@ -113,5 +113,18 @@ namespace Claims.Tests.Business
                 insertedClaim.InsuranceResponsibilityAmount
             );
         }
+
+        [TestMethod]
+        public void TestGetByIdZeroReturnsNull()
+        {
+            // Arrange
+            ClaimBLL claimBLL = new ClaimBLL();
+
+            // Act
+            IClaimModel retrievedClaim = claimBLL.GetById(0);
+
+            // Assert
+            Assert.IsNull(retrievedClaim);
+        }
     }
 }
