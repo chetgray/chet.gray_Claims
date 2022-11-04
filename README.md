@@ -1,5 +1,7 @@
 # Claims
 
+## User Story #211890: Create Claims Console Application
+
 > Create a Claims Console Application.
 > 
 > - [x] Client ABC Hospital needs a very basic Claims application.
@@ -56,3 +58,11 @@
 >     interact directly with DTOs in your main program.  So your flow
 >     should go: Main Program -> Business Logic (converts Models to DTOs
 >     and vice-versa) -> Repository -> DAL.
+
+## User Story #231512: Add Unit Tests to Your Console Claims Application
+
+> Update your Console Claims Application (US 211890) to add Unit Tests
+> for the following functionality:
+> 
+> - [x] Add a Claim
+> - [x] View a Claim
