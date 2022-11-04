@@ -9,8 +9,8 @@ namespace Claims.Business.Models
         public ICarrierModel Carrier { get; set; } = new CarrierModel();
         public IHospitalModel Hospital { get; set; } = new HospitalModel();
         public IProcedureModel Procedure { get; set; } = new ProcedureModel();
-        public decimal OutstandingAmount { get; set; }
-        public decimal InsuranceResponsibilityAmount { get; set; }
+        public decimal OutstandingAmount { get; set; } = decimal.Zero;
+        public decimal InsuranceResponsibilityAmount { get; set; } = decimal.Zero;
         public decimal PatientResponsibilityAmount
         {
             get => OutstandingAmount - InsuranceResponsibilityAmount;
