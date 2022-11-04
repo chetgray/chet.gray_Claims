@@ -139,5 +139,20 @@ namespace Claims.Tests.Business
             // Assert
             Assert.IsNull(retrievedClaim);
         }
+
+        [TestMethod]
+        public void TestGetByIdBeyondLastInsertedReturnsNull()
+        {
+            // Arrange
+            ClaimBLL claimBLL = new ClaimBLL();
+            IClaimModel claim = new ClaimModel();
+            IClaimModel insertedClaim = claimBLL.Insert(claim);
+
+            // Act
+            IClaimModel retrievedClaim = claimBLL.GetById((int)insertedClaim.Id + 1);
+
+            // Assert
+            Assert.IsNull(retrievedClaim);
+        }
     }
 }
