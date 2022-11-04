@@ -71,26 +71,7 @@ namespace Claims.Tests.Business
         {
             // Arrange
             ClaimBLL claimBLL = new ClaimBLL();
-            IClaimModel claim = new ClaimModel
-            {
-                Patient = new PatientModel
-                {
-                    LastName = "patient last name",
-                    FirstName = "patient first name",
-                    MiddleName = "patient middle name",
-                    Street = "patient street",
-                    City = "patient city",
-                    State = "patient state",
-                    // Zip is limited to 5 characters
-                    Zip = "p zip",
-                    PhoneNumber = "patient phone number",
-                    EmailAddress = "patient email address",
-                },
-                Carrier = new CarrierModel { Name = "carrier name", },
-                Hospital = new HospitalModel { Name = "hospital name", },
-                OutstandingAmount = decimal.One,
-                InsuranceResponsibilityAmount = decimal.One
-            };
+            IClaimModel claim = CreateExampleClaimModel();
 
             // Act
             IClaimModel insertedClaim = claimBLL.Insert(claim);
@@ -175,26 +156,7 @@ namespace Claims.Tests.Business
         {
             // Arrange
             ClaimBLL claimBLL = new ClaimBLL();
-            IClaimModel claim = new ClaimModel
-            {
-                Patient = new PatientModel
-                {
-                    LastName = "patient last name",
-                    FirstName = "patient first name",
-                    MiddleName = "patient middle name",
-                    Street = "patient street",
-                    City = "patient city",
-                    State = "patient state",
-                    // Zip is limited to 5 characters
-                    Zip = "p zip",
-                    PhoneNumber = "patient phone number",
-                    EmailAddress = "patient email address",
-                },
-                Carrier = new CarrierModel { Name = "carrier name", },
-                Hospital = new HospitalModel { Name = "hospital name", },
-                OutstandingAmount = decimal.One,
-                InsuranceResponsibilityAmount = decimal.One
-            };
+            IClaimModel claim = CreateExampleClaimModel();
             IClaimModel insertedClaim = claimBLL.Insert(claim);
 
             // Act
@@ -226,6 +188,32 @@ namespace Claims.Tests.Business
             Assert.AreEqual(insertedClaim.Procedure.Name, retrievedClaim.Procedure.Name);
             Assert.AreEqual(insertedClaim.OutstandingAmount, retrievedClaim.OutstandingAmount);
             Assert.AreEqual(insertedClaim.InsuranceResponsibilityAmount, retrievedClaim.InsuranceResponsibilityAmount);
+        }
+
+        private static IClaimModel CreateExampleClaimModel()
+        {
+            IClaimModel claim = new ClaimModel
+            {
+                Patient = new PatientModel
+                {
+                    LastName = "patient last name",
+                    FirstName = "patient first name",
+                    MiddleName = "patient middle name",
+                    Street = "patient street",
+                    City = "patient city",
+                    State = "patient state",
+                    // Zip is limited to 5 characters
+                    Zip = "p zip",
+                    PhoneNumber = "patient phone number",
+                    EmailAddress = "patient email address",
+                },
+                Carrier = new CarrierModel { Name = "carrier name", },
+                Hospital = new HospitalModel { Name = "hospital name", },
+                OutstandingAmount = decimal.One,
+                InsuranceResponsibilityAmount = decimal.One
+            };
+
+            return claim;
         }
     }
 }
