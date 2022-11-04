@@ -126,5 +126,18 @@ namespace Claims.Tests.Business
             // Assert
             Assert.IsNull(retrievedClaim);
         }
+
+        [TestMethod]
+        public void TestGetByIdNegativeReturnsNull()
+        {
+            // Arrange
+            ClaimBLL claimBLL = new ClaimBLL();
+
+            // Act
+            IClaimModel retrievedClaim = claimBLL.GetById(-1);
+
+            // Assert
+            Assert.IsNull(retrievedClaim);
+        }
     }
 }
