@@ -64,5 +64,5 @@
 > Update your Console Claims Application (US 211890) to add Unit Tests
 > for the following functionality:
 > 
-> - [ ] Add a Claim
+> - [x] Add a Claim
 > - [ ] View a Claim
