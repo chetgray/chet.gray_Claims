@@ -65,4 +65,4 @@
 > for the following functionality:
 > 
 > - [x] Add a Claim
-> - [ ] View a Claim
+> - [x] View a Claim

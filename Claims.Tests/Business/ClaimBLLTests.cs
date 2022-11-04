@@ -169,5 +169,63 @@ namespace Claims.Tests.Business
             // Assert
             Assert.AreEqual(insertedClaim.Id, retrievedClaim.Id);
         }
+
+        [TestMethod]
+        public void TestGetByIdExistingReturnsSameData()
+        {
+            // Arrange
+            ClaimBLL claimBLL = new ClaimBLL();
+            IClaimModel claim = new ClaimModel
+            {
+                Patient = new PatientModel
+                {
+                    LastName = "patient last name",
+                    FirstName = "patient first name",
+                    MiddleName = "patient middle name",
+                    Street = "patient street",
+                    City = "patient city",
+                    State = "patient state",
+                    // Zip is limited to 5 characters
+                    Zip = "p zip",
+                    PhoneNumber = "patient phone number",
+                    EmailAddress = "patient email address",
+                },
+                Carrier = new CarrierModel { Name = "carrier name", },
+                Hospital = new HospitalModel { Name = "hospital name", },
+                OutstandingAmount = decimal.One,
+                InsuranceResponsibilityAmount = decimal.One
+            };
+            IClaimModel insertedClaim = claimBLL.Insert(claim);
+
+            // Act
+            IClaimModel retrievedClaim = claimBLL.GetById((int)insertedClaim.Id);
+
+            // Assert
+            Assert.AreEqual(insertedClaim.Id, retrievedClaim.Id);
+            Assert.AreEqual(insertedClaim.Patient.Id, retrievedClaim.Patient.Id);
+            Assert.AreEqual(insertedClaim.Patient.LastName, retrievedClaim.Patient.LastName);
+            Assert.AreEqual(insertedClaim.Patient.FirstName, retrievedClaim.Patient.FirstName);
+            Assert.AreEqual(insertedClaim.Patient.MiddleName, retrievedClaim.Patient.MiddleName);
+            Assert.AreEqual(insertedClaim.Patient.Street, retrievedClaim.Patient.Street);
+            Assert.AreEqual(insertedClaim.Patient.City, retrievedClaim.Patient.City);
+            Assert.AreEqual(insertedClaim.Patient.State, retrievedClaim.Patient.State);
+            Assert.AreEqual(insertedClaim.Patient.Zip, retrievedClaim.Patient.Zip);
+            Assert.AreEqual(insertedClaim.Patient.PhoneNumber, retrievedClaim.Patient.PhoneNumber);
+            Assert.AreEqual(insertedClaim.Patient.EmailAddress, retrievedClaim.Patient.EmailAddress);
+            Assert.AreEqual(insertedClaim.Carrier.Id, retrievedClaim.Carrier.Id);
+            Assert.AreEqual(insertedClaim.Carrier.Name, retrievedClaim.Carrier.Name);
+            Assert.AreEqual(insertedClaim.Carrier.CustomerServicePhoneNumber, retrievedClaim.Carrier.CustomerServicePhoneNumber);
+            Assert.AreEqual(insertedClaim.Hospital.Id, retrievedClaim.Hospital.Id);
+            Assert.AreEqual(insertedClaim.Hospital.Name, retrievedClaim.Hospital.Name);
+            Assert.AreEqual(insertedClaim.Hospital.Street, retrievedClaim.Hospital.Street);
+            Assert.AreEqual(insertedClaim.Hospital.City, retrievedClaim.Hospital.City);
+            Assert.AreEqual(insertedClaim.Hospital.State, retrievedClaim.Hospital.State);
+            Assert.AreEqual(insertedClaim.Hospital.Zip, retrievedClaim.Hospital.Zip);
+            Assert.AreEqual(insertedClaim.Procedure.Id, retrievedClaim.Procedure.Id);
+            Assert.AreEqual(insertedClaim.Procedure.Code, retrievedClaim.Procedure.Code);
+            Assert.AreEqual(insertedClaim.Procedure.Name, retrievedClaim.Procedure.Name);
+            Assert.AreEqual(insertedClaim.OutstandingAmount, retrievedClaim.OutstandingAmount);
+            Assert.AreEqual(insertedClaim.InsuranceResponsibilityAmount, retrievedClaim.InsuranceResponsibilityAmount);
+        }
     }
 }
